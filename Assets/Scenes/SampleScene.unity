@@ -4932,7 +4932,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 963194227}
-  speed: 1
+  speed: 50
 --- !u!1001 &967079075
 PrefabInstance:
   m_ObjectHideFlags: 0
