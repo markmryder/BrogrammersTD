@@ -2829,6 +2829,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5226273837159133694, guid: 7898966407645ae4082c332b444d0922, type: 3}
   m_PrefabInstance: {fileID: 484052572}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &486700535 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4064131810308192218, guid: 7898966407645ae4082c332b444d0922, type: 3}
+  m_PrefabInstance: {fileID: 1014910188}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a96592e33e3dd43ab1158a1cb92c02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &504633760
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3489,6 +3500,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5226273837159133694, guid: 7898966407645ae4082c332b444d0922, type: 3}
   m_PrefabInstance: {fileID: 610016860}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &676887698 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4064131810308192218, guid: 7898966407645ae4082c332b444d0922, type: 3}
+  m_PrefabInstance: {fileID: 1710741662}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a96592e33e3dd43ab1158a1cb92c02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &684094625
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7511,6 +7533,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1558606767}
+  - component: {fileID: 1558606768}
   m_Layer: 0
   m_Name: World
   m_TagString: Untagged
@@ -7682,6 +7705,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1558606768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558606766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 284687b2a41711940a12c1900a0dc939, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startNode: {fileID: 676887698}
+  endNode: {fileID: 486700535}
+  path: []
 --- !u!1001 &1564499357
 PrefabInstance:
   m_ObjectHideFlags: 0

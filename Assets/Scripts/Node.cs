@@ -21,7 +21,7 @@ public class Node : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateColor();
+        //UpdateColor();
     }
 
 	private void UpdateColor()
