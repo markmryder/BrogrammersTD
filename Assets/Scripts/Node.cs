@@ -6,7 +6,6 @@ using UnityEngine;
 public class Node : MonoBehaviour
 {
     const int gridSize = 10;
-    Vector2Int gridPosition;
     public bool isExplored = false;
     public bool isTraverable = true;
     public Node exploredFrom;

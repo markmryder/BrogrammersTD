@@ -5,7 +5,7 @@ using UnityEngine;
 public class BFSPath : MonoBehaviour
 {
     Dictionary<Vector2Int, Node> grid = new Dictionary<Vector2Int, Node>();
-    [SerializeField] Node startNode, endNode;
+    [SerializeField] public Node startNode, endNode;
 
     Queue<Node> queue = new Queue<Node>();
     bool isRunning = true;
@@ -111,6 +111,7 @@ public class BFSPath : MonoBehaviour
         LoadBlocks();
         BreadthFirstSearch();
         CreatePath();
+        print("count in BFS method: "+path.Count);
         return path;
     }
 

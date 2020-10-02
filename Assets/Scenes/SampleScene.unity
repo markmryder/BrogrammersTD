@@ -7290,6 +7290,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8038fd558fc50b408deebee998635a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  main: {fileID: 963194227}
+  camera: {fileID: 1520975249}
 --- !u!20 &1520975249
 Camera:
   m_ObjectHideFlags: 0
@@ -7314,7 +7316,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 30
+  far clip plane: 50
   field of view: 51.64825
   orthographic: 0
   orthographic size: 5
