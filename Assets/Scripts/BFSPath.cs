@@ -94,7 +94,7 @@ public class BFSPath : MonoBehaviour
         {
             bool isOverlapping = grid.ContainsKey(waypoint.GetGridPos());
             var gridPosition = waypoint.GetGridPos();
-            if (isOverlapping)
+            if (isOverlapping || !waypoint.isTraverable)
             {
                 Debug.LogWarning("Skipping duplicate block at: " + waypoint);
             }
