@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class LevelGen : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -103,6 +103,18 @@ public class NewBehaviourScript : MonoBehaviour
         {
             for (int j = 0; j < gridCol; j++)
             {
+                if (grid[i, j] == 0)
+                {
+                    GameObject obstacle = (GameObject)Resources.Load("Wall");
+                    Instantiate(obstacle);
+                    Vector3 position = new Vector3(i * 10f, 0, j * 10f);
+                    obstacle.transform.position = position;
+                }
+                GameObject floor = (GameObject)Resources.Load("QuadCube");
+                Instantiate(floor);
+                Vector3 positionTwo = new Vector3(i * 10f, 0, j * 10f);
+                floor.transform.position = positionTwo;
+
                 //Console.Write(grid[i, j]);
             }
            // Console.Write("\n");
