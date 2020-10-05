@@ -21,37 +21,37 @@ public class CameraController : MonoBehaviour
     void Update()
 	{
 		MoveCamera();
-
+		
 	}
 
 	private void MoveCamera()
 	{
 		if (Input.GetKey(KeyCode.D))
 		{
-			if (camera.transform.position.x <= maxX)
+			if (camera.transform.position.x <= maxX && camera.transform.position.z >= minZ)
 			{
-				camera.transform.position += new Vector3(speed * Time.deltaTime, 0, 0);
+				camera.transform.position += new Vector3(speed * Time.deltaTime, 0, -speed * Time.deltaTime);
 			}
 		}
 		if (Input.GetKey(KeyCode.A))
 		{
-			if (camera.transform.position.x >= minX)
+			if (camera.transform.position.x >= minX && camera.transform.position.z <= maxZ)
 			{
-				camera.transform.position += new Vector3(-speed * Time.deltaTime, 0, 0);
+				camera.transform.position += new Vector3(-speed * Time.deltaTime, 0, speed * Time.deltaTime);
 			}
 		}
 		if (Input.GetKey(KeyCode.W))
 		{
-			if (camera.transform.position.z <= maxZ)
+			if (camera.transform.position.z <= maxZ && camera.transform.position.x <= maxX)
 			{
-				camera.transform.position += new Vector3(0, 0, speed * Time.deltaTime);
+				camera.transform.position += new Vector3(speed * Time.deltaTime, 0, speed * Time.deltaTime);
 			}
 		}
 		if (Input.GetKey(KeyCode.S))
 		{
-			if (camera.transform.position.z >= minZ)
+			if (camera.transform.position.z >= minZ && camera.transform.position.x >= minX)
 			{
-				camera.transform.position += new Vector3(0, 0, -speed * Time.deltaTime);
+				camera.transform.position += new Vector3(-speed * Time.deltaTime, 0, -speed * Time.deltaTime);
 			}
 		}
 	}
