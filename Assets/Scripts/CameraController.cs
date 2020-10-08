@@ -25,17 +25,7 @@ public class CameraController : MonoBehaviour
 		//PlaceTurret();
 	}
 
-	private void PlaceTurret()
-	{
-		//throw new NotImplementedException();
-		if (Input.GetMouseButtonDown(0))
-		{
-			//place turret
-			Ray ray = camera.ScreenPointToRay(Input.mousePosition);
-			RaycastHit hit;
-
-		}
-	}
+	
 
 	private void MoveCamera()
 	{
