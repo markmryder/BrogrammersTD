@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,7 +22,19 @@ public class CameraController : MonoBehaviour
     void Update()
 	{
 		MoveCamera();
-		
+		PlaceTurret();
+	}
+
+	private void PlaceTurret()
+	{
+		//throw new NotImplementedException();
+		if (Input.GetMouseButtonDown(0))
+		{
+			//place turret
+			Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+			RaycastHit hit;
+
+		}
 	}
 
 	private void MoveCamera()
