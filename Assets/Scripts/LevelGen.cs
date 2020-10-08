@@ -1,19 +1,30 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class LevelGen : MonoBehaviour
 {
+    [SerializeField] int minWalls = 30;
     // Start is called before the first frame update
+
     void Start()
+    { 
+    
+    }
+    private void Awake()
+    {
+        BuildGrid();
+    }
+    private void BuildGrid()
     {
         //grid size
         int gridRow = 10;
         int gridCol = 20;
         //number of paths
-        System.Random rand = new System.Random();
-        int path = rand.Next(2, 3);
+        System.Random rand = new System.Random(System.Guid.NewGuid().GetHashCode());
+        int path = 2;
         //-------------------------------------------makes grid
         int[,] grid = new int[gridRow, gridCol];
         for (int i = 0; i < gridRow; i++)
@@ -85,7 +96,8 @@ public class LevelGen : MonoBehaviour
                     if (neighbour.Count > 0) // checks possible neighbours
                     {
                         int possibleRoutes = neighbour.Count;
-                        int nextDir = neighbour[rand.Next(0, possibleRoutes - 1)];
+                        //int nextDir = neighbour[rand.Next(0, possibleRoutes -1)];
+                        int nextDir = neighbour[rand.Next(0, possibleRoutes)];
                         int nextRow = currentRow + rowDir[nextDir];
                         int nextCol = currentCol + colDir[nextDir];
                         grid[nextRow, nextCol] = i + 1; //sets position on grid
@@ -99,6 +111,25 @@ public class LevelGen : MonoBehaviour
             }
         }
         //----------------------------------draw final grid
+
+        int countBlocks = 0;
+        for (int row = 0; row < gridRow; row++)
+        {
+            for (int col = 0; col < gridCol; col++)
+            {
+                if (grid[row,col] == 0)
+                {
+                    countBlocks++;
+                }
+            }
+
+        }
+
+        if (countBlocks < minWalls)
+        {
+            BuildGrid();
+        }
+
         for (int i = 0; i < gridRow; i++)
         {
             for (int j = 0; j < gridCol; j++)
@@ -119,6 +150,10 @@ public class LevelGen : MonoBehaviour
             }
            // Console.Write("\n");
         }
+        GameObject floorStart = (GameObject)Resources.Load("QuadCube");
+        Instantiate(floorStart);
+        Vector3 positionThree = new Vector3(9 * 10f, 0, 19 * 10f);
+        floorStart.transform.position = positionThree;
     }
 
     // Update is called once per frame
