@@ -22,7 +22,7 @@ public class CameraController : MonoBehaviour
     void Update()
 	{
 		MoveCamera();
-		PlaceTurret();
+		//PlaceTurret();
 	}
 
 	private void PlaceTurret()

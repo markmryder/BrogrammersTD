@@ -3,15 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class LevelGen : MonoBehaviour
 {
     [SerializeField] int minWalls = 30;
+    [SerializeField] NavMeshSurface surface;
+    [SerializeField] int path = 2;
+
     // Start is called before the first frame update
 
     void Start()
-    { 
-    
+    {
+        surface.BuildNavMesh();
     }
     private void Awake()
     {
@@ -20,11 +24,11 @@ public class LevelGen : MonoBehaviour
     private void BuildGrid()
     {
         //grid size
-        int gridRow = 10;
-        int gridCol = 20;
+        int gridRow = 20;
+        int gridCol = 10;
         //number of paths
         System.Random rand = new System.Random(System.Guid.NewGuid().GetHashCode());
-        int path = 2;
+        //int path = 2;
         //-------------------------------------------makes grid
         int[,] grid = new int[gridRow, gridCol];
         for (int i = 0; i < gridRow; i++)
@@ -125,10 +129,10 @@ public class LevelGen : MonoBehaviour
 
         }
 
-        if (countBlocks < minWalls)
-        {
-            BuildGrid();
-        }
+        //if (countBlocks < minWalls)
+        //{
+        //    BuildGrid();
+        //}
 
         for (int i = 0; i < gridRow; i++)
         {
@@ -150,10 +154,10 @@ public class LevelGen : MonoBehaviour
             }
            // Console.Write("\n");
         }
-        GameObject floorStart = (GameObject)Resources.Load("QuadCube");
-        Instantiate(floorStart);
-        Vector3 positionThree = new Vector3(9 * 10f, 0, 19 * 10f);
-        floorStart.transform.position = positionThree;
+        //GameObject floorStart = (GameObject)Resources.Load("QuadCube");
+        //Instantiate(floorStart);
+        //Vector3 positionThree = new Vector3(9 * 10f, 0, 19 * 10f);
+        //floorStart.transform.position = positionThree;
     }
 
     // Update is called once per frame

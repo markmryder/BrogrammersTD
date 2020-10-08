@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class EnemyMoveTo : MonoBehaviour
 {
 
-    Vector3 end = new Vector3(190f, 0f, 10f);
+    [SerializeField] Vector3 end; //= new Vector3(190f, 0f, 10f);
     public NavMeshSurface surface;
     public NavMeshAgent agent;
 
