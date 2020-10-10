@@ -17,6 +17,8 @@ public class LevelGen : MonoBehaviour
     {
         BuildGrid();
     }
+
+
     private void BuildGrid()
     {
         //grid size
