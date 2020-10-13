@@ -81,7 +81,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3634851707170814441, guid: 7898966407645ae4082c332b444d0922, type: 3}
       propertyPath: m_TagString
+<<<<<<< HEAD
+      value: Wall
+=======
       value: Untagged
+>>>>>>> master
       objectReference: {fileID: 0}
     - target: {fileID: 4660547357030801647, guid: 7898966407645ae4082c332b444d0922, type: 3}
       propertyPath: m_Enabled

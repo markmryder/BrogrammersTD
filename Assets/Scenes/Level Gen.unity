@@ -579,13 +579,22 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 187098752}
+<<<<<<< HEAD
+  m_LocalRotation: {x: 0.3420201, y: 0, z: 0, w: 0.9396927}
+  m_LocalPosition: {x: 56, y: 118.8, z: -10}
+=======
   m_LocalRotation: {x: 0.35355338, y: 0.35355338, z: -0.1464466, w: 0.8535535}
   m_LocalPosition: {x: -50, y: 100, z: -50}
+>>>>>>> master
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+<<<<<<< HEAD
+  m_LocalEulerAnglesHint: {x: 40, y: 0, z: 0}
+=======
   m_LocalEulerAnglesHint: {x: 45, y: 45, z: 0}
+>>>>>>> master
 --- !u!114 &187098756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -598,6 +607,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48e7054e41883c04286bc4e9b2377943, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  minWalls: 20
+=======
   minWalls: 50
   surface: {fileID: 694764284}
   path: 3
@@ -3030,3 +3042,4 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fd60cd18eb40e44b87eae8fe6acdeef, type: 3}
+>>>>>>> master

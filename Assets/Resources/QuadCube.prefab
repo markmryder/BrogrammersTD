@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8103329991692414523}
   - component: {fileID: 3773667399274033758}
   - component: {fileID: 6083286600135109102}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,9 +202,11 @@ GameObject:
   - component: {fileID: 5226273837159133694}
   - component: {fileID: 705749910319042451}
   - component: {fileID: 4064131810308192218}
+  - component: {fileID: -6537012209299289978}
+  - component: {fileID: -5884772270315352438}
   m_Layer: 0
   m_Name: QuadCube
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -217,7 +219,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3634851707170814441}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 190, y: 0, z: 90}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 9179120117108534981}
@@ -256,6 +258,32 @@ MonoBehaviour:
   isExplored: 0
   isTraverable: 1
   exploredFrom: {fileID: 0}
+--- !u!65 &-6537012209299289978
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3634851707170814441}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: -0.5, z: 0}
+--- !u!114 &-5884772270315352438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3634851707170814441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5d7ff5467f4e014ca48514995368f84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalTurrent: 50
 --- !u!1 &5524045208975122975
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,7 +488,7 @@ GameObject:
   - component: {fileID: 8567712198505798363}
   - component: {fileID: 2001962022336624309}
   - component: {fileID: 6957139091386640039}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}

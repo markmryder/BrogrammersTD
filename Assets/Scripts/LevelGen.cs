@@ -22,6 +22,8 @@ public class LevelGen : MonoBehaviour
     {
         BuildGrid();
     }
+
+
     private void BuildGrid()
     {
         //grid size
@@ -44,7 +46,6 @@ public class LevelGen : MonoBehaviour
         }
         //-------------------------------------------pick random spots to start
         Dictionary<int, List<(int, int)>> stack = new Dictionary<int, List<(int, int)>>();
-        stack.Clear();
         for (int i = 0; i < path; i++)
         {
             int randRow = rand.Next(gridRow);
