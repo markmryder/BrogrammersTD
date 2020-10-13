@@ -7,7 +7,8 @@ using UnityEngine;
 
 public class TurrentPlacement : MonoBehaviour
 {
-    [SerializeField] int totalTurrent = 50;
+    static public int totalTurret = 5;
+   // [SerializeField] int totalTurrent = 50;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,24 +16,41 @@ public class TurrentPlacement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+
+    void OnMouseOver()
     {
+        print(gameObject.tag);
+       // print("hello");
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (gameObject.tag == "Floor" && totalTurret > 0)
+            {
+                GameObject turrent = (GameObject)Resources.Load("Turret");
+                Instantiate(turrent, transform.position, Quaternion.identity);
+                totalTurret--;
+            }
+        }
+    }
+   // void Update()
+   // {
+        /*
         if (Input.GetMouseButtonDown(0)) 
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                print(hit.transform.name);
+                print(hit.transform.tag);
                 print(hit.point);
-                if (hit.transform.name == "Top")
+                print(hit.transform.position);
+                if (hit.transform.tag == "Floor")
                 {
                     if (totalTurrent > 0)
                     {
                         GameObject turrent = (GameObject)Resources.Load("Turret");
-                        Instantiate(turrent);
-                        Vector3 position = hit.point;
-                        turrent.transform.position = position;
+                        Instantiate(turrent, transform.position, Quaternion.identity);
+                        //Vector3 position = hit.point;
+                        //turrent.transform.position = position;
                         totalTurrent--;
                     }
                 }
@@ -44,5 +62,6 @@ public class TurrentPlacement : MonoBehaviour
                 }
             }
         }
-    }
+        */
+   // }
 }
