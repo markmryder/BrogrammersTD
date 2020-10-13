@@ -21,7 +21,7 @@ public class Base : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-        Debug.Log("hit");
+        //Debug.Log("hit");
         Destroy(other.gameObject);
         Hitpoints--;
 	}
