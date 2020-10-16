@@ -487,12 +487,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5490822248725694025}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c64e68abc0e88443b19167c88e5eaee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   objectToPan: {fileID: 5490822247791543385}
+  attackRange: 30
+  projectile: {fileID: 831079101563476458, guid: 0e98f0c65d334c44fa1059f8e29565fc, type: 3}
   targetEnemy: {fileID: 0}
 --- !u!65 &4228291990618712186
 BoxCollider:

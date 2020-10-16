@@ -15,7 +15,7 @@ public class LevelGen : MonoBehaviour
 
     void Start()
     {
-        surface = GameObject.Find("NavMesh").GetComponent<NavMeshSurface>();
+        surface = GameObject.Find("World").GetComponent<NavMeshSurface>();
         surface.BuildNavMesh();
     }
     private void Awake()
@@ -133,10 +133,7 @@ public class LevelGen : MonoBehaviour
 
         }
 
-		//if (countBlocks < minWalls)
-		//{
-		//	BuildGrid();
-		//}
+
 
 		for (int i = 0; i < gridRow; i++)
         {
@@ -158,10 +155,7 @@ public class LevelGen : MonoBehaviour
             }
            // Console.Write("\n");
         }
-        //GameObject floorStart = (GameObject)Resources.Load("QuadCube");
-        //Instantiate(floorStart);
-        //Vector3 positionThree = new Vector3(9 * 10f, 0, 19 * 10f);
-        //floorStart.transform.position = positionThree;
+
     }
 
     // Update is called once per frame
