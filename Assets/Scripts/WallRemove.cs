@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class WallRemove : MonoBehaviour
 {
     private List<GameObject> Walls;
     private bool isGameActive = true;
+    [SerializeField] NavMeshSurface surface;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +19,7 @@ public class WallRemove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //surface.BuildNavMesh();
     }
 
     public IEnumerator RemoveBlocks()
@@ -25,6 +27,7 @@ public class WallRemove : MonoBehaviour
 
 		while (isGameActive)
 		{
+            surface.BuildNavMesh();
             yield return new WaitForSeconds(5);
             System.Random rand = new System.Random();
             int randNum = rand.Next(0, Walls.Count);
@@ -32,6 +35,7 @@ public class WallRemove : MonoBehaviour
             Walls.RemoveAt(randNum);
             Debug.Log(destroyed.name);
             Destroy(destroyed);
+            
         }
 
     }

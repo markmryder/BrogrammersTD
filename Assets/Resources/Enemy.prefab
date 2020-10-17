@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4f1a286fc318ef478cdbf4148560f5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  end: {x: 200, y: 0, z: 40}
+  end: {x: 220, y: 0, z: 40}
   surface: {fileID: 0}
   agent: {fileID: 0}
   Hitpoints: 12

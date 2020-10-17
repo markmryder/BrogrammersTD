@@ -19,13 +19,14 @@ public class TurrentPlacement : MonoBehaviour
 
     void OnMouseOver()
     {
-        print(gameObject.tag);
+        //print(gameObject.tag);
        // print("hello");
         if (Input.GetMouseButtonDown(0))
         {
             if (gameObject.tag == "Floor" && totalTurret > 0)
             {
-                GameObject turrent = (GameObject)Resources.Load("Turret");
+                //GameObject turrent = (GameObject)Resources.Load("Turret");
+                GameObject turrent = (GameObject)Resources.Load("KenneyPrefabs/KenneyTurret2");
                 Instantiate(turrent, transform.position, Quaternion.identity);
                 totalTurret--;
             }

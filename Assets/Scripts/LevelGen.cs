@@ -141,7 +141,8 @@ public class LevelGen : MonoBehaviour
             {
                 if (grid[i, j] == 0)
                 {
-                    GameObject obstacle = (GameObject)Resources.Load("Wall");
+                    //GameObject obstacle = (GameObject)Resources.Load("Wall");
+                    GameObject obstacle = (GameObject)Resources.Load("KenneyPrefabs/KenneyWall");
                     Instantiate(obstacle);
                     Vector3 position = new Vector3(i * 10f, 0, j * 10f);
                     obstacle.transform.position = position;
