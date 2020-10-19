@@ -30,12 +30,13 @@ public class TurrentPlacement : MonoBehaviour
                 Instantiate(turrent, transform.position, Quaternion.identity);
                 totalTurret--;
             }
-            else if(gameObject.tag == "Wall" && totalTurret > 0)
-			{
-                GameObject turrent = (GameObject)Resources.Load("KenneyPrefabs/KenneyTurret2");
-                Instantiate(turrent, transform.position, Quaternion.identity);
-                totalTurret--;
-            }
+   //         else if(gameObject.tag == "Wall" && totalTurret > 0)
+			//{
+   //             GameObject turrent = (GameObject)Resources.Load("KenneyPrefabs/KenneyTurret2");
+   //             Instantiate(turrent, transform.position, Quaternion.identity);
+   //             totalTurret--;
+   //         }
+            print(totalTurret);
         }
     }
    // void Update()
