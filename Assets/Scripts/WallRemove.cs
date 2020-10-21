@@ -27,6 +27,10 @@ public class WallRemove : MonoBehaviour
 
 		while (isGameActive)
 		{
+            if(Walls.Count == 0)
+			{
+                break;
+			}
             surface.BuildNavMesh();
             yield return new WaitForSeconds(5);
             System.Random rand = new System.Random();

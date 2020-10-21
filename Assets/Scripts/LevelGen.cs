@@ -21,6 +21,7 @@ public class LevelGen : MonoBehaviour
     private void Awake()
     {
         BuildGrid();
+        Time.timeScale = 1;
     }
 
 
