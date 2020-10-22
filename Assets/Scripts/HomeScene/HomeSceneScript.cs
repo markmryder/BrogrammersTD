@@ -1,12 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class Base : MonoBehaviour
+public class HomeSceneScript : MonoBehaviour
 {
-
-    [SerializeField] int Hitpoints = 5;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -19,10 +17,8 @@ public class Base : MonoBehaviour
         
     }
 
-	private void OnTriggerEnter(Collider other)
+    public void LoadGame()
 	{
-        //Debug.Log("hit");
-        Destroy(other.gameObject);
-        Hitpoints--;
+        SceneManager.LoadScene("DemoSceneCopy");
 	}
 }

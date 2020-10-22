@@ -15,13 +15,16 @@ public class LevelGen : MonoBehaviour
 
     void Start()
     {
-        surface = GameObject.Find("NavMesh").GetComponent<NavMeshSurface>();
+        surface = GameObject.Find("World").GetComponent<NavMeshSurface>();
         surface.BuildNavMesh();
     }
     private void Awake()
     {
         BuildGrid();
+        Time.timeScale = 1;
     }
+
+
     private void BuildGrid()
     {
         //grid size
@@ -44,7 +47,6 @@ public class LevelGen : MonoBehaviour
         }
         //-------------------------------------------pick random spots to start
         Dictionary<int, List<(int, int)>> stack = new Dictionary<int, List<(int, int)>>();
-        stack.Clear();
         for (int i = 0; i < path; i++)
         {
             int randRow = rand.Next(gridRow);
@@ -132,10 +134,7 @@ public class LevelGen : MonoBehaviour
 
         }
 
-		//if (countBlocks < minWalls)
-		//{
-		//	BuildGrid();
-		//}
+
 
 		for (int i = 0; i < gridRow; i++)
         {
@@ -143,7 +142,8 @@ public class LevelGen : MonoBehaviour
             {
                 if (grid[i, j] == 0)
                 {
-                    GameObject obstacle = (GameObject)Resources.Load("Wall");
+                    //GameObject obstacle = (GameObject)Resources.Load("Wall");
+                    GameObject obstacle = (GameObject)Resources.Load("KenneyPrefabs/KenneyWall");
                     Instantiate(obstacle);
                     Vector3 position = new Vector3(i * 10f, 0, j * 10f);
                     obstacle.transform.position = position;
@@ -157,10 +157,7 @@ public class LevelGen : MonoBehaviour
             }
            // Console.Write("\n");
         }
-        //GameObject floorStart = (GameObject)Resources.Load("QuadCube");
-        //Instantiate(floorStart);
-        //Vector3 positionThree = new Vector3(9 * 10f, 0, 19 * 10f);
-        //floorStart.transform.position = positionThree;
+
     }
 
     // Update is called once per frame
