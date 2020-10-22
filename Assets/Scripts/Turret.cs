@@ -16,17 +16,17 @@ public class Turret : MonoBehaviour
         SetTargetEnemy();
         if (targetEnemy)
         {
-            Vector3 targetPostition = new Vector3(targetEnemy.position.x,
+            /*Vector3 targetPostition = new Vector3(targetEnemy.position.x,
                                         objectToPan.transform.position.y,
                                         targetEnemy.position.z);
-            objectToPan.LookAt(targetPostition);
+            objectToPan.LookAt(targetPostition);*/
+            objectToPan.LookAt(targetEnemy);
             Shooting(IsInRange());
         }
         else
         {
             Shooting(false);
         }
-        //objectToPan.LookAt(targetEnemy);
 
         
     }
