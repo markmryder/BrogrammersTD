@@ -7,6 +7,7 @@ TagManager:
   - Turret
   - Floor
   - Wall
+  - turret_head
   layers:
   - Default
   - TransparentFX

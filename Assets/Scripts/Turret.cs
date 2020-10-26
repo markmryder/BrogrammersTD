@@ -10,8 +10,13 @@ public class Turret : MonoBehaviour
 
     [SerializeField] Transform targetEnemy;
 
-    // Update is called once per frame
-    void Update()
+	private void Start()
+	{
+        objectToPan = GetComponent<Transform>();
+	}
+
+	// Update is called once per frame
+	void Update()
     {
         SetTargetEnemy();
         if (targetEnemy)
