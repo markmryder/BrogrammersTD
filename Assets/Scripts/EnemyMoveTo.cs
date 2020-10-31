@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityStandardAssets.Characters.ThirdPerson;
 
 public class EnemyMoveTo : MonoBehaviour
 {
@@ -11,17 +12,31 @@ public class EnemyMoveTo : MonoBehaviour
     public NavMeshAgent agent;
     [SerializeField] int Hitpoints = 12;
 
+    public ThirdPersonCharacter character;
+
     // Start is called before the first frame update
     void Start()
     {
         surface = GameObject.Find("NavMesh").GetComponent<NavMeshSurface>();
         agent = GetComponent<NavMeshAgent>();
+
+        agent.updateRotation = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         agent.SetDestination(end);
+
+        if(agent.remainingDistance > agent.stoppingDistance) 
+        {
+            character.Move(agent.desiredVelocity, false, false);
+        }
+		else
+		{
+            character.Move(Vector3.zero, false, false);
+		}
+        
     }
 
 	public void DestroyEnemy()
