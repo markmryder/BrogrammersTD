@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -13,6 +14,7 @@ public class WaveManager : MonoBehaviour
     private int waveNumber;
     private int score;
     [SerializeField] Text WaveInfoText;
+    public Text TurretInfoText;
 
     public Node SpawnLocation;
     public Node Destination;
@@ -22,6 +24,9 @@ public class WaveManager : MonoBehaviour
     private List<GameObject> Walls;
     private bool isGameActive = true;
     [SerializeField] NavMeshSurface surface;
+
+    private List<Turret> Turrets;
+    private int TurretCount;
 
     private void Awake()
 	{
@@ -33,18 +38,36 @@ public class WaveManager : MonoBehaviour
 
 	public void OnLevelWasLoaded(int level)
 	{
+        Turrets = GameObject.FindObjectsOfType<Turret>().ToList<Turret>();
         Walls = GameObject.FindGameObjectsWithTag("Wall").ToList<GameObject>();
         var spawn = GameObject.FindObjectOfType<SpawnNode>();
         var destination = GameObject.FindObjectOfType<Base>();
         SpawnLocation = spawn.GetComponent<Node>();
         Destination = destination.GetComponent<Node>();
-
+        TurretInfoText = GameObject.Find("TurretsRemainText").GetComponent<Text>();
+        TurrentPlacement.totalTurret = 5;
         waveNumber = WaveStats.Wave;
         score = WaveStats.Score;
 
         WaveInfoText.text = "Wave: " + waveNumber;
     }
 
+	private void Update()
+	{
+        CountTurrets();
+        UpdateUI();
+	}
+
+	private void UpdateUI()
+	{
+        TurretInfoText.text = "Turrets Remaining: " + TurretCount;
+	}
+    private void CountTurrets()
+	{
+        //Turrets = GameObject.FindObjectsOfType<Turret>().ToList<Turret>();
+        TurretCount = TurrentPlacement.totalTurret;
+
+    }
 	public void StartWave() 
     {
         isWaveTriggered = true;

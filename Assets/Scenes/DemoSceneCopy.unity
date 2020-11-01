@@ -1110,6 +1110,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -5884772270315352438, guid: 7898966407645ae4082c332b444d0922, type: 3}
+      propertyPath: turretText
+      value: 
+      objectReference: {fileID: 1115940420}
     - target: {fileID: 3634851707170814441, guid: 7898966407645ae4082c332b444d0922, type: 3}
       propertyPath: m_Name
       value: 'Cube: 22,4'
@@ -3018,6 +3022,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WaveInfoText: {fileID: 603157472}
+  TurretInfoText: {fileID: 0}
   SpawnLocation: {fileID: 0}
   Destination: {fileID: 0}
   isWaveTriggered: 0
@@ -3856,9 +3861,9 @@ RectTransform:
   m_Father: {fileID: 505452154}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -157, y: -204}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 260, y: 35}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1605985181
