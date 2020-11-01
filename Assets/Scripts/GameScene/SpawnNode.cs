@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Base : MonoBehaviour
+public class SpawnNode : MonoBehaviour
 {
-
-    [SerializeField] int Hitpoints = 5;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -18,12 +15,4 @@ public class Base : MonoBehaviour
     {
         
     }
-
-	private void OnTriggerEnter(Collider other)
-	{
-        //Debug.Log("hit");
-        print("Destroy person");
-        Destroy(other.gameObject);
-        Hitpoints--;
-	}
 }

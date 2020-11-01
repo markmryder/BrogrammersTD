@@ -19,6 +19,8 @@ public class SpawnEnemies : MonoBehaviour
         StartCoroutine(StartSpawn());
     }
 
+
+
     // Update is called once per frame
     void Update()
     {
@@ -29,9 +31,10 @@ public class SpawnEnemies : MonoBehaviour
 	{
 		while (isWaveTriggered)
 		{
+            yield return new WaitForSeconds(3);
             Vector3 position = SpawnLocation.transform.position;
             Instantiate(Enemy, position, Quaternion.identity);
-            yield return new WaitForSeconds(3);
+            
         }
 
         

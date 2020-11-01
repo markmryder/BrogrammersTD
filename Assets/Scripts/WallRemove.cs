@@ -13,7 +13,7 @@ public class WallRemove : MonoBehaviour
     void Start()
     {
         Walls = GameObject.FindGameObjectsWithTag("Wall").ToList<GameObject>();
-        StartCoroutine(RemoveBlocks());
+        
     }
 
     // Update is called once per frame

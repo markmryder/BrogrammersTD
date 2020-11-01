@@ -11,20 +11,31 @@ public class GameScript : MonoBehaviour
         menu.SetActive(false);
     }
     void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            if (!menu.activeInHierarchy)
-            {
-                PauseGame();
-            }
-            else if (menu.activeInHierarchy)
-            {
-                ContinueGame();
-            }
-        }
-    }
-    private void PauseGame()
+	{
+		CheckForPause();
+		//Wave number TODO create wave
+		//enemies remaining
+		//score = total enemies killed
+		//base health - GetBaseHealth();
+		//turrets placed
+	}
+
+	private void CheckForPause()
+	{
+		if (Input.GetKeyDown(KeyCode.M))
+		{
+			if (!menu.activeInHierarchy)
+			{
+				PauseGame();
+			}
+			else if (menu.activeInHierarchy)
+			{
+				ContinueGame();
+			}
+		}
+	}
+
+	private void PauseGame()
     {
         Time.timeScale = 0;
         menu.SetActive(true);
@@ -37,6 +48,7 @@ public class GameScript : MonoBehaviour
 
     public void GotoHomeMenu()
 	{
+		StopAllCoroutines();
         SceneManager.LoadScene("HomeScene");
 	}
 }
