@@ -15,6 +15,8 @@ public class WaveManager : MonoBehaviour
     private int score;
     [SerializeField] Text WaveInfoText;
     public Text TurretInfoText;
+    public Text BaseHealthInfoText;
+    public Text ScoreInfoText;
 
     public Node SpawnLocation;
     public Node Destination;
@@ -25,8 +27,8 @@ public class WaveManager : MonoBehaviour
     private bool isGameActive = true;
     [SerializeField] NavMeshSurface surface;
 
-    private List<Turret> Turrets;
     private int TurretCount;
+    public int BaseHealth = 10;
 
     private void Awake()
 	{
@@ -38,35 +40,46 @@ public class WaveManager : MonoBehaviour
 
 	public void OnLevelWasLoaded(int level)
 	{
-        Turrets = GameObject.FindObjectsOfType<Turret>().ToList<Turret>();
         Walls = GameObject.FindGameObjectsWithTag("Wall").ToList<GameObject>();
         var spawn = GameObject.FindObjectOfType<SpawnNode>();
         var destination = GameObject.FindObjectOfType<Base>();
         SpawnLocation = spawn.GetComponent<Node>();
         Destination = destination.GetComponent<Node>();
         TurretInfoText = GameObject.Find("TurretsRemainText").GetComponent<Text>();
+        BaseHealthInfoText = GameObject.Find("HealthText").GetComponent<Text>();
+        ScoreInfoText = GameObject.Find("ScoreText").GetComponent<Text>();
+
         TurrentPlacement.totalTurret = 5;
         waveNumber = WaveStats.Wave;
         score = WaveStats.Score;
-
+        BaseHealth = 10;
         WaveInfoText.text = "Wave: " + waveNumber;
     }
 
 	private void Update()
 	{
         CountTurrets();
-        UpdateUI();
+        UpdateTurretUI();
+        UpdateScoreBoard();
+        UpdateBaseHealthUI();
 	}
 
-	private void UpdateUI()
+	private void UpdateTurretUI()
 	{
         TurretInfoText.text = "Turrets Remaining: " + TurretCount;
 	}
+    private void UpdateScoreBoard()
+	{
+        ScoreInfoText.text = "Score: " + score;
+	}
+    private void UpdateBaseHealthUI()
+	{
+        BaseHealthInfoText.text = "Base Health: " + BaseHealth;
+	}
+        
     private void CountTurrets()
 	{
-        //Turrets = GameObject.FindObjectsOfType<Turret>().ToList<Turret>();
         TurretCount = TurrentPlacement.totalTurret;
-
     }
 	public void StartWave() 
     {

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Base : MonoBehaviour
 {
 
-    [SerializeField] int Hitpoints = 5;
+    [SerializeField]public int Hitpoints = 5;
 
     // Start is called before the first frame update
     void Start()

@@ -4,16 +4,10 @@ using UnityEngine;
 
 public class TurrentDestroy : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     void OnMouseOver()
     {
-        //print(gameObject.tag);
-        //print("hello");
+
         if (Input.GetMouseButtonDown(0))
         {
             if (gameObject.tag == "Turret")
@@ -24,10 +18,4 @@ public class TurrentDestroy : MonoBehaviour
         }
     }
 
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
