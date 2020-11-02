@@ -17,6 +17,7 @@ public class WaveManager : MonoBehaviour
     public Text TurretInfoText;
     public Text BaseHealthInfoText;
     public Text ScoreInfoText;
+    public Text EnemiesRemainingText;
 
     public Node SpawnLocation;
     public Node Destination;
@@ -29,6 +30,7 @@ public class WaveManager : MonoBehaviour
 
     private int TurretCount;
     public int BaseHealth = 10;
+    private int enemiesRemaining;
 
     private void Awake()
 	{
@@ -48,12 +50,15 @@ public class WaveManager : MonoBehaviour
         TurretInfoText = GameObject.Find("TurretsRemainText").GetComponent<Text>();
         BaseHealthInfoText = GameObject.Find("HealthText").GetComponent<Text>();
         ScoreInfoText = GameObject.Find("ScoreText").GetComponent<Text>();
+        EnemiesRemainingText = GameObject.Find("EnemiesRemainingText").GetComponent<Text>();
+
 
         TurrentPlacement.totalTurret = 5;
         waveNumber = WaveStats.Wave;
         score = WaveStats.Score;
         BaseHealth = 10;
         WaveInfoText.text = "Wave: " + waveNumber;
+        enemiesRemaining = WaveStats.EnemiesPerWave;
     }
 
 	private void Update()
@@ -62,6 +67,12 @@ public class WaveManager : MonoBehaviour
         UpdateTurretUI();
         UpdateScoreBoard();
         UpdateBaseHealthUI();
+        UpdateEnemiesRemainingUI();
+
+		if (IsWaveOver())
+		{
+            NextWave();
+		}
 	}
 
 	private void UpdateTurretUI()
@@ -76,11 +87,35 @@ public class WaveManager : MonoBehaviour
 	{
         BaseHealthInfoText.text = "Base Health: " + BaseHealth;
 	}
+
+    private void UpdateEnemiesRemainingUI()
+	{
+        EnemiesRemainingText.text = "Enemies Remaining: " + enemiesRemaining;
+	}
         
     private void CountTurrets()
 	{
         TurretCount = TurrentPlacement.totalTurret;
     }
+    private bool IsWaveOver()
+	{
+        if((enemiesRemaining > 0 || CountEnemies() > 0) && BaseHealth > 0)
+		{
+            return false;
+		}
+		else
+		{
+            return true;
+		}
+	}
+    private int CountEnemies()
+	{
+        List<EnemyMoveTo> enemies = FindObjectsOfType<EnemyMoveTo>().ToList<EnemyMoveTo>();
+        int enemyCount = enemies.Count;
+        enemies.Clear();
+        return enemyCount;
+	}
+
 	public void StartWave() 
     {
         isWaveTriggered = true;
@@ -90,14 +125,16 @@ public class WaveManager : MonoBehaviour
 
     public IEnumerator StartSpawn()
     {
-        while (isWaveTriggered)
+        while (isWaveTriggered && enemiesRemaining > 0)
         {
             yield return new WaitForSeconds(3);
             Vector3 position = SpawnLocation.transform.position;
             Instantiate(Enemy, position, Quaternion.identity);
+            enemiesRemaining--;
 
         }
     }
+
 
     public void NextWave()
 	{

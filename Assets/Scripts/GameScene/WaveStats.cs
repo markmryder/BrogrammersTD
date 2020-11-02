@@ -7,7 +7,7 @@ public static class WaveStats
 
 	private static int score = 0;
 	private static int wave = 1;
-	private static int enemiesRemaining = 30;
+	private static int enemiesPerWave = 30;
 
 	public static int Score 
 	{
@@ -21,10 +21,10 @@ public static class WaveStats
 		set { wave = value; }
 	}
 
-	public static int EnemiesRemaining
+	public static int EnemiesPerWave
 	{
-		get { return enemiesRemaining; }
-		set { enemiesRemaining = value; }
+		get { return enemiesPerWave; }
+		set { enemiesPerWave = value; }
 	}
 
 	public static void NextWave()
@@ -32,16 +32,11 @@ public static class WaveStats
 		wave++;
 	}
 
-	public static void RemoveEnemeyFromCount() 
-	{
-		enemiesRemaining--;
-	}
-
 	public static void Reset()
 	{
 		score = 0;
 		wave = 1;
-		enemiesRemaining = 30;
+		enemiesPerWave = 30;
 	}
 
 }
