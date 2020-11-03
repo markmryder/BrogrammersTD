@@ -13,11 +13,6 @@ public class GameScript : MonoBehaviour
     void Update()
 	{
 		CheckForPause();
-		//Wave number TODO create wave
-		//enemies remaining
-		//score = total enemies killed
-		//base health - GetBaseHealth();
-		//turrets placed
 	}
 
 	private void CheckForPause()

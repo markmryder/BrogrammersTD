@@ -38,5 +38,9 @@ public static class WaveStats
 		wave = 1;
 		enemiesPerWave = 30;
 	}
+	public static void AddToScore()
+	{
+		score++;
+	}
 
 }

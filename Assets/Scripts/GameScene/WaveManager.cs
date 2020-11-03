@@ -50,10 +50,12 @@ public class WaveManager : MonoBehaviour
         var destination = GameObject.FindObjectOfType<Base>();
         SpawnLocation = spawn.GetComponent<Node>();
         Destination = destination.GetComponent<Node>();
+
         TurretInfoText = GameObject.Find("TurretsRemainText").GetComponent<Text>();
         BaseHealthInfoText = GameObject.Find("HealthText").GetComponent<Text>();
         ScoreInfoText = GameObject.Find("ScoreText").GetComponent<Text>();
         EnemiesRemainingText = GameObject.Find("EnemiesRemainingText").GetComponent<Text>();
+
         var Base = FindObjectOfType<Base>();
         BaseHealth = Base.Hitpoints;
         spawnRoutine = null;
@@ -62,7 +64,6 @@ public class WaveManager : MonoBehaviour
         TurrentPlacement.totalTurret = 5;
         waveNumber = WaveStats.Wave;
         score = WaveStats.Score;
-        //BaseHealth = 10;
         WaveInfoText.text = "Wave: " + waveNumber;
         enemiesRemaining = WaveStats.EnemiesPerWave;
     }
@@ -95,7 +96,6 @@ public class WaveManager : MonoBehaviour
 
     public void GameOver()
 	{
-        //isWaveTriggered = false;
         StopCoroutine(spawnRoutine);
 		if (IsGameOver)
 		{
@@ -147,7 +147,6 @@ public class WaveManager : MonoBehaviour
 		{
             return false;
 		}
-        //  && BaseHealth > 0
         else
         {
             return true;

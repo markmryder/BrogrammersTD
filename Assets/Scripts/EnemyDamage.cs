@@ -21,15 +21,15 @@ public class EnemyDamage : MonoBehaviour
     private void OnParticleCollision()
     {
         hitPoints = hitPoints - 1;
-        if (hitPoints < 1)
+        if (hitPoints == 0)
         {
-            anim.SetBool("DeathTrigger", true);
-            //Destroy(gameObject);
+            anim.SetBool("DeathTrigger", true);        
             StartCoroutine(WaitForDeath());
         }
     }
     private IEnumerator WaitForDeath()
 	{
+        WaveStats.AddToScore();
         yield return new WaitForSeconds(3);
         Destroy(gameObject);
 	}
