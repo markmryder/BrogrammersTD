@@ -37,7 +37,6 @@ public class WallRemove : MonoBehaviour
             int randNum = rand.Next(0, Walls.Count);
             GameObject destroyed = Walls[randNum];
             Walls.RemoveAt(randNum);
-            Debug.Log(destroyed.name);
             Destroy(destroyed);
             
         }

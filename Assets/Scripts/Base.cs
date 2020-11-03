@@ -25,5 +25,9 @@ public class Base : MonoBehaviour
         print("Destroy person");
         Destroy(other.gameObject);
         Hitpoints--;
+        if(Hitpoints < 0)
+		{
+            Hitpoints = 0;
+		}
 	}
 }

@@ -23,8 +23,6 @@ public class TurrentPlacement : MonoBehaviour
                 Instantiate(turrent, transform.position, Quaternion.identity);
                 totalTurret--;
             }
-
-            print(totalTurret);
         }
     }
 

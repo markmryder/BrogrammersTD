@@ -29,8 +29,11 @@ public class WaveManager : MonoBehaviour
     [SerializeField] NavMeshSurface surface;
 
     private int TurretCount;
-    public int BaseHealth = 10;
+    public int BaseHealth = 5;
     private int enemiesRemaining;
+    private bool IsGameOver = false;
+
+    private Coroutine spawnRoutine;
 
     private void Awake()
 	{
@@ -51,28 +54,69 @@ public class WaveManager : MonoBehaviour
         BaseHealthInfoText = GameObject.Find("HealthText").GetComponent<Text>();
         ScoreInfoText = GameObject.Find("ScoreText").GetComponent<Text>();
         EnemiesRemainingText = GameObject.Find("EnemiesRemainingText").GetComponent<Text>();
+        var Base = FindObjectOfType<Base>();
+        BaseHealth = Base.Hitpoints;
+        spawnRoutine = null;
 
 
         TurrentPlacement.totalTurret = 5;
         waveNumber = WaveStats.Wave;
         score = WaveStats.Score;
-        BaseHealth = 10;
+        //BaseHealth = 10;
         WaveInfoText.text = "Wave: " + waveNumber;
         enemiesRemaining = WaveStats.EnemiesPerWave;
     }
 
 	private void Update()
 	{
+        CheckBaseHealth();
         CountTurrets();
         UpdateTurretUI();
         UpdateScoreBoard();
         UpdateBaseHealthUI();
         UpdateEnemiesRemainingUI();
 
+
 		if (IsWaveOver())
 		{
             NextWave();
 		}
+	}
+
+	private void CheckBaseHealth()
+	{
+        var Base = FindObjectOfType<Base>();
+        BaseHealth = Base.Hitpoints;
+        if(BaseHealth <= 0)
+		{
+            GameOver();
+		}
+	}
+
+    public void GameOver()
+	{
+        //isWaveTriggered = false;
+        StopCoroutine(spawnRoutine);
+		if (IsGameOver)
+		{
+            IsGameOver = false;
+            StartCoroutine(GameOverCoroutine());
+        }
+
+        // start some coroutine maybe
+        // return to home screen
+        print("GAME OVER");
+        IsGameOver = true;
+	}
+
+    private IEnumerator GameOverCoroutine()
+	{
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach(GameObject enemy in enemies)
+		{
+            enemy.GetComponent<Animator>().SetBool("Win",true);
+		}
+        yield return null;
 	}
 
 	private void UpdateTurretUI()
@@ -99,12 +143,13 @@ public class WaveManager : MonoBehaviour
     }
     private bool IsWaveOver()
 	{
-        if((enemiesRemaining > 0 || CountEnemies() > 0) && BaseHealth > 0)
+        if(enemiesRemaining > 0 || CountEnemies() > 0)
 		{
             return false;
 		}
-		else
-		{
+        //  && BaseHealth > 0
+        else
+        {
             return true;
 		}
 	}
@@ -119,7 +164,7 @@ public class WaveManager : MonoBehaviour
 	public void StartWave() 
     {
         isWaveTriggered = true;
-        StartCoroutine(StartSpawn());
+        spawnRoutine = StartCoroutine(StartSpawn());
         StartCoroutine(RemoveBlocks());
     }
 

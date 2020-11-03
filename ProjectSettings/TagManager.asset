@@ -8,6 +8,7 @@ TagManager:
   - Floor
   - Wall
   - turret_head
+  - Enemy
   layers:
   - Default
   - TransparentFX
