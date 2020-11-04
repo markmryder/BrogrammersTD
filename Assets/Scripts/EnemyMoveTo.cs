@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityStandardAssets.Characters.ThirdPerson;
@@ -27,6 +28,7 @@ public class EnemyMoveTo : MonoBehaviour
     void Update()
     {
         agent.SetDestination(end);
+        
 
         if(agent.remainingDistance > agent.stoppingDistance) 
         {

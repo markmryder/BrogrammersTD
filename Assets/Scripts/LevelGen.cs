@@ -15,12 +15,13 @@ public class LevelGen : MonoBehaviour
 
     void Start()
     {
+        BuildGrid();
         surface = GameObject.Find("World").GetComponent<NavMeshSurface>();
         surface.BuildNavMesh();
     }
     private void Awake()
     {
-        BuildGrid();
+        //BuildGrid();
         Time.timeScale = 1;
     }
 
@@ -31,7 +32,11 @@ public class LevelGen : MonoBehaviour
         int gridRow = 20;
         int gridCol = 10;
         //number of paths
-        System.Random rand = new System.Random(System.Guid.NewGuid().GetHashCode());
+        int seed = System.Guid.NewGuid().GetHashCode();
+        //int seed = 12464509;
+        System.Random rand = new System.Random(seed);
+        print(seed);
+        
         //int path = 2;
         //-------------------------------------------makes grid
         int[,] grid = new int[gridRow, gridCol];
@@ -111,6 +116,8 @@ public class LevelGen : MonoBehaviour
                         int nextCol = currentCol + colDir[nextDir];
                         grid[nextRow, nextCol] = i + 1; //sets position on grid
                         stack[i].Add((nextRow, nextCol));
+
+                        
                     }
                     else
                     {
