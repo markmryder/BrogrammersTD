@@ -12,15 +12,17 @@ public class ShowMazeGeneration : MonoBehaviour
 
 
 
-    void Start()
+    private void Start()
     {
+        //StartCoroutine(DestroyWalls());
+        
     }
-        
-        
+
+
     private void Awake()
     {
         BuildWallAndFloor();
-
+        //StartCoroutine(DestroyWalls());
     }
 
     public void StartStuff()
@@ -31,6 +33,7 @@ public class ShowMazeGeneration : MonoBehaviour
     public IEnumerator DestroyWalls()
 	{
         print("start of coroutine");
+        yield return new WaitForSeconds(10);
         //grid size
         int gridRow = 20;
         int gridCol = 10;
@@ -68,11 +71,11 @@ public class ShowMazeGeneration : MonoBehaviour
         int[] rowDir = { 0, 1, 0, -1 };
         int[] colDir = { -1, 0, 1, 0 };
         bool check = true;
-        print("hi outside loop");
+
         while (check)
         { //keep performing until stack is empty
-            yield return new WaitForSeconds(1);
-            print("hi");
+            //yield return new WaitForSeconds(1);
+
             check = false;
             for (int i = 0; i < path; i++)  //loops through # of paths
             {
@@ -125,8 +128,20 @@ public class ShowMazeGeneration : MonoBehaviour
                         
 
                         var block = GameObject.Find("Cube: "+nextRow+","+nextCol);
-                        Destroy(block);
+
+
+                        Debug.Log("Found cube");
                         print(block);
+
+                        var faces = block.GetComponentsInChildren<MeshRenderer>();
+                        foreach (var face in faces)
+						{
+                            face.material.SetColor("_Color", Color.white);
+						}
+
+                        yield return new WaitForSeconds(0.5f);
+                        Destroy(block);
+                        
                     }
                     else
                     {
