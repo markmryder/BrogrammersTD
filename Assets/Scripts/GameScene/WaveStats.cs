@@ -7,7 +7,7 @@ public static class WaveStats
 
 	private static int score = 0;
 	private static int wave = 1;
-	private static int enemiesPerWave = 30;
+	private static int enemiesPerWave = 10;
 
 	public static int Score 
 	{

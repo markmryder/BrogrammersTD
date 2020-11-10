@@ -689,7 +689,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minWalls: 50
   surface: {fileID: 694764284}
-  path: 3
+  path: 2
 --- !u!114 &187098757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3023,11 +3023,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WaveInfoText: {fileID: 603157472}
   TurretInfoText: {fileID: 0}
+  BaseHealthInfoText: {fileID: 0}
+  ScoreInfoText: {fileID: 0}
+  EnemiesRemainingText: {fileID: 0}
   SpawnLocation: {fileID: 0}
   Destination: {fileID: 0}
   isWaveTriggered: 0
   Enemy: {fileID: 8027183650287558477, guid: 2fd60cd18eb40e44b87eae8fe6acdeef, type: 3}
   surface: {fileID: 694764284}
+  BaseHealth: 5
 --- !u!4 &1194645255
 Transform:
   m_ObjectHideFlags: 0
