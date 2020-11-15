@@ -9,10 +9,12 @@ public class Turret : MonoBehaviour
     [SerializeField] ParticleSystem projectile;
 
     [SerializeField] Transform targetEnemy;
+    [SerializeField] AudioSource audioSource;
 
 	private void Start()
 	{
         objectToPan = GetComponent<Transform>();
+        //audioSource = GetComponent<AudioSource>();
 	}
 
 	// Update is called once per frame
@@ -72,5 +74,16 @@ public class Turret : MonoBehaviour
     {
         var emissionModule = projectile.emission;
         emissionModule.enabled = v;
-    }
+		if (v)
+		{
+			//playsound
+			if (!audioSource.isPlaying)
+			{
+                audioSource.Play();
+                
+                print("pew pew");
+            }
+
+		}
+	}
 }

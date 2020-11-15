@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class TurrentPlacement : MonoBehaviour
 {
     static public int totalTurret = 5;
+    private GameObject turrent;
 
 	public void Start()
 	{
@@ -22,11 +23,28 @@ public class TurrentPlacement : MonoBehaviour
         {
             if (gameObject.tag == "Floor" && totalTurret > 0)
             {
-                GameObject turrent = (GameObject)Resources.Load("KenneyPrefabs/KenneyTurret2");
-                Instantiate(turrent, transform.position, Quaternion.identity);
+                turrent = (GameObject)Resources.Load("KenneyPrefabs/KenneyTurret2");
+                Vector3 position = new Vector3(transform.position.x, transform.position.y - 20, transform.position.z);
+                Instantiate(turrent, position, Quaternion.identity);
+                //StartCoroutine(TurretPlacementAnimation());
+                print(transform.position);
                 totalTurret--;
             }
         }
+    }
+
+    public IEnumerator TurretPlacementAnimation()
+	{
+        
+        while(turrent.transform.position.y < 0) 
+        {
+            yield return new WaitForEndOfFrame();
+            Vector3 position = new Vector3(turrent.transform.position.x, turrent.transform.position.y, turrent.transform.position.z);
+            position.y += 1f;
+            turrent.transform.position = position;
+            
+        }
+        yield return null;
     }
 
 }
