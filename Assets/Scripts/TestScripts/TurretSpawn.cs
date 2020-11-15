@@ -5,7 +5,6 @@ using UnityEngine;
 public class TurretSpawn : MonoBehaviour
 {
     [SerializeField] AudioSource audioSource;
-    AudioClip audioClip;
 
     // Start is called before the first frame update
     void Start()
@@ -37,13 +36,9 @@ public class TurretSpawn : MonoBehaviour
         float timeLength = stop - start;
         int samplesLength = (int)(frequency * timeLength);
         AudioClip newClip = AudioClip.Create(clip.name + "-sub", samplesLength, 1, frequency, false);
-        /* Create a temporary buffer for the samples */
         float[] data = new float[samplesLength];
-        /* Get the data from the original clip */
         clip.GetData(data, (int)(frequency * start));
-        /* Transfer the data to the new clip */
         newClip.SetData(data, 0);
-        /* Return the sub clip */
         return newClip;
     }
 
