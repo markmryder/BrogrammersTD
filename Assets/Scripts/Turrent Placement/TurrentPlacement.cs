@@ -10,9 +10,12 @@ public class TurrentPlacement : MonoBehaviour
 {
     static public int totalTurret = 5;
 
-    
+	public void Start()
+	{
+		//need to be able to disable in editor
+	}
 
-    void OnMouseOver()
+	void OnMouseOver()
     {
 
         if (Input.GetMouseButtonDown(0))

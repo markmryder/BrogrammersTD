@@ -34,6 +34,7 @@ public class LevelGen : MonoBehaviour
         //number of paths
         int seed = System.Guid.NewGuid().GetHashCode();
         //int seed = 12464509;
+        //int seed = -1628367540; //for maze demo video
         System.Random rand = new System.Random(seed);
         print(seed);
         
