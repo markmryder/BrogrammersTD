@@ -10,12 +10,16 @@ public class EnemyDamage : MonoBehaviour
 
     private Animator anim;
     public ThirdPersonCharacter character;
+    private CapsuleCollider collider;
+    private EnemyMoveTo mover;
 
     // Start is called before the first frame update
     void Start()
     {
         anim = gameObject.GetComponent<Animator>();
         character = gameObject.GetComponent<ThirdPersonCharacter>();
+        collider = gameObject.GetComponent<CapsuleCollider>();
+        mover = gameObject.GetComponent<EnemyMoveTo>();
     }
 
     private void OnParticleCollision()
@@ -23,8 +27,11 @@ public class EnemyDamage : MonoBehaviour
         hitPoints = hitPoints - 1;
         if (hitPoints == 0)
         {
-            anim.SetBool("DeathTrigger", true);        
+            anim.SetBool("DeathTrigger", true);
             StartCoroutine(WaitForDeath());
+            Destroy(mover);
+            Destroy(character);
+            Destroy(collider);
         }
     }
     private IEnumerator WaitForDeath()

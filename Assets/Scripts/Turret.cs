@@ -5,7 +5,7 @@ using UnityEngine;
 public class Turret : MonoBehaviour
 {
     [SerializeField] Transform objectToPan;
-    [SerializeField] float attackRange = 10f;
+    [SerializeField] float attackRange = 30f;
     [SerializeField] ParticleSystem projectile;
 
     [SerializeField] Transform targetEnemy;
@@ -23,11 +23,11 @@ public class Turret : MonoBehaviour
         SetTargetEnemy();
         if (targetEnemy)
         {
-            /*Vector3 targetPostition = new Vector3(targetEnemy.position.x,
-                                        objectToPan.transform.position.y,
+            Vector3 targetPostition = new Vector3(targetEnemy.position.x,
+                                        targetEnemy.position.y+10,
                                         targetEnemy.position.z);
-            objectToPan.LookAt(targetPostition);*/
-            objectToPan.LookAt(targetEnemy);
+            objectToPan.LookAt(targetPostition);
+            //objectToPan.LookAt(targetEnemy);
             Shooting(IsInRange());
         }
         else
@@ -39,11 +39,11 @@ public class Turret : MonoBehaviour
     }
     private void SetTargetEnemy()
     {
-        var sceneEnemies = FindObjectsOfType<EnemyMoveTo>();
+        var sceneEnemies = FindObjectsOfType<CapsuleCollider>();
         if (sceneEnemies.Length == 0) { return; }
 
         Transform closestEnemy = sceneEnemies[0].transform;
-        foreach (EnemyMoveTo testEnemy in sceneEnemies)
+        foreach (CapsuleCollider testEnemy in sceneEnemies)
         {
             closestEnemy = GetClosest(closestEnemy, testEnemy.transform);
         }
