@@ -12,10 +12,25 @@ public class TurrentDestroy : MonoBehaviour
         {
             if (gameObject.tag == "Turret")
             {
-                Destroy(gameObject);
+                
+                StartCoroutine(TurretDestroyAnimation());
                 TurrentPlacement.totalTurret++;
             }
         }
+    }
+
+
+    public IEnumerator TurretDestroyAnimation()
+    {
+        while (transform.position.y > -20)
+        {
+            yield return new WaitForEndOfFrame();
+            Vector3 position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            position.y -= 0.5f;
+            transform.position = position;
+        }
+        Destroy(gameObject);
+        yield return null;
     }
 
 }
