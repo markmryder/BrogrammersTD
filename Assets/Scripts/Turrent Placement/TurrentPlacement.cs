@@ -26,7 +26,8 @@ public class TurrentPlacement : MonoBehaviour
                 turrent = (GameObject)Resources.Load("KenneyPrefabs/KenneyTurret2");
                 Vector3 position = new Vector3(transform.position.x, transform.position.y - 20, transform.position.z);
                 Instantiate(turrent, position, Quaternion.identity);
-                //StartCoroutine(TurretPlacementAnimation());
+                var smoke = (GameObject)Resources.Load("SmokeParticleSystem");
+                Instantiate(smoke, transform.position, Quaternion.identity);
                 print(transform.position);
                 totalTurret--;
             }

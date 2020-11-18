@@ -22,7 +22,7 @@ public class TurretSpawn : MonoBehaviour
         {
             yield return new WaitForEndOfFrame();
             Vector3 position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-            position.y += 1f;
+            position.y += 0.5f;
             transform.position = position;
 
         }
