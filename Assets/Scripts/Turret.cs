@@ -24,7 +24,7 @@ public class Turret : MonoBehaviour
         if (targetEnemy)
         {
             Vector3 targetPostition = new Vector3(targetEnemy.position.x,
-                                        targetEnemy.position.y+10,
+                                        targetEnemy.position.y+11,
                                         targetEnemy.position.z);
             objectToPan.LookAt(targetPostition);
             //objectToPan.LookAt(targetEnemy);
