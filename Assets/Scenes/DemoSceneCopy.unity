@@ -3032,6 +3032,7 @@ MonoBehaviour:
   Enemy: {fileID: 8027183650287558477, guid: 2fd60cd18eb40e44b87eae8fe6acdeef, type: 3}
   surface: {fileID: 694764284}
   BaseHealth: 5
+  TimeBetweenWallRemove: 1
 --- !u!4 &1194645255
 Transform:
   m_ObjectHideFlags: 0

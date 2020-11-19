@@ -34,6 +34,7 @@ public class WaveManager : MonoBehaviour
     private bool IsGameOver = false;
 
     private Coroutine spawnRoutine;
+    [SerializeField] int TimeBetweenWallRemove = 5;
 
     private void Awake()
 	{
@@ -45,7 +46,7 @@ public class WaveManager : MonoBehaviour
 
 	public void OnLevelWasLoaded(int level)
 	{
-        Walls = GameObject.FindGameObjectsWithTag("Wall").ToList<GameObject>();
+        //Walls = GameObject.FindGameObjectsWithTag("Wall").ToList<GameObject>();
         var spawn = GameObject.FindObjectOfType<SpawnNode>();
         var destination = GameObject.FindObjectOfType<Base>();
         SpawnLocation = spawn.GetComponent<Node>();
@@ -190,21 +191,26 @@ public class WaveManager : MonoBehaviour
 
     public IEnumerator RemoveBlocks()
     {
-
+        Walls = GameObject.FindGameObjectsWithTag("Wall").ToList<GameObject>();
         while (isGameActive)
         {
             if (Walls.Count == 0)
             {
                 break;
             }
-            surface.BuildNavMesh();
-            yield return new WaitForSeconds(5);
+            //surface.BuildNavMesh();
+            yield return new WaitForSeconds(TimeBetweenWallRemove);
             System.Random rand = new System.Random();
             int randNum = rand.Next(0, Walls.Count);
             GameObject destroyed = Walls[randNum];
+            //GameObject explosion = (GameObject)Resources.Load("Explson1");
+            GameObject explosion = (GameObject)Resources.Load("Exploson1");
+            Instantiate(explosion, destroyed.transform.position, Quaternion.identity);
+            //explosion.Play();
             Walls.RemoveAt(randNum);
             Debug.Log(destroyed.name);
             Destroy(destroyed);
+
 
         }
 
