@@ -37,10 +37,6 @@ public class WaveManager : MonoBehaviour
     private Coroutine wallRemove;
     [SerializeField] int TimeBetweenWallRemove = 5;
 
-    private void Awake()
-	{
-
-	}
 
 
 
@@ -109,7 +105,7 @@ public class WaveManager : MonoBehaviour
 
         // start some coroutine maybe
         // return to home screen
-        print("GAME OVER");
+        print("GameOver");
         IsGameOver = true;
 	}
 

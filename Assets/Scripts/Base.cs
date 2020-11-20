@@ -66,6 +66,8 @@ public class Base : MonoBehaviour
             yield return new WaitForSeconds(1);
         }
 
+        var script = GameObject.FindObjectOfType<GameScript>();
+        script.EndGame();
         yield return null;
     }
 }
