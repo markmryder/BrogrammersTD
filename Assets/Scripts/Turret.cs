@@ -15,7 +15,12 @@ public class Turret : MonoBehaviour
 	{
         objectToPan = GetComponent<Transform>();
         //audioSource = GetComponent<AudioSource>();
+
+        //consider changing tag briefly so that player cant despawn quickly
+        
 	}
+
+    
 
 	// Update is called once per frame
 	void Update()

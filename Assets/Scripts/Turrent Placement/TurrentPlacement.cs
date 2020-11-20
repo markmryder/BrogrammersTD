@@ -30,9 +30,18 @@ public class TurrentPlacement : MonoBehaviour
                 Instantiate(smoke, transform.position, Quaternion.identity);
                 print(transform.position);
                 totalTurret--;
+                StartCoroutine(PreventAnotherTurretPlacement());
             }
         }
     }
+
+
+    public IEnumerator PreventAnotherTurretPlacement()
+	{
+        gameObject.tag = "Floor_Delay";
+        yield return new WaitForSeconds(1);
+        gameObject.tag = "Floor";
+	}
 
     public IEnumerator TurretPlacementAnimation()
 	{
