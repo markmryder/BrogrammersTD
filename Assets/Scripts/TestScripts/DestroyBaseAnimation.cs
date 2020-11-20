@@ -2,12 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Base : MonoBehaviour
+public class DestroyBaseAnimation : MonoBehaviour
 {
-
-    [SerializeField]public int Hitpoints = 5;
-
-
     [SerializeField] GameObject hanger1;
     [SerializeField] GameObject hanger2;
     [SerializeField] GameObject SatelliteDish;
@@ -16,7 +12,6 @@ public class Base : MonoBehaviour
     private List<GameObject> buildings;
 
     [SerializeField] Camera mainCamera;
-
 
     // Start is called before the first frame update
     void Start()
@@ -29,43 +24,28 @@ public class Base : MonoBehaviour
         buildings.Add(Relay2);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-	private void OnTriggerEnter(Collider other)
-	{
-        //Debug.Log("hit");
-        print("Destroy person");
-        Destroy(other.gameObject);
-        Hitpoints--;
-        if(Hitpoints <= 0)
-		{
-            Hitpoints = 0;
-            StartCoroutine(DestroyBase());
-		}
-	}
+  
 
     public IEnumerator DestroyBase()
-    {
+	{
         //Get Camera to base
         mainCamera.transform.position = new Vector3(150, 100, -30);
 
         //Destroy each object
-        foreach (GameObject building in buildings)
-        {
-
+        foreach(GameObject building in buildings)
+		{
+            
             //add animation
             GameObject explosion = (GameObject)Resources.Load("Exploson1");
             Instantiate(explosion, building.transform.position, Quaternion.identity);
             //add sound
-
+            
             Destroy(building);
             yield return new WaitForSeconds(1);
         }
 
-        yield return null;
-    }
+        //yield return null;
+	}
+
+
 }

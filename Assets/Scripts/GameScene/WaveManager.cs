@@ -34,6 +34,7 @@ public class WaveManager : MonoBehaviour
     private bool IsGameOver = false;
 
     private Coroutine spawnRoutine;
+    private Coroutine wallRemove;
     [SerializeField] int TimeBetweenWallRemove = 5;
 
     private void Awake()
@@ -60,6 +61,7 @@ public class WaveManager : MonoBehaviour
         var Base = FindObjectOfType<Base>();
         BaseHealth = Base.Hitpoints;
         spawnRoutine = null;
+        wallRemove = null;
 
 
         TurrentPlacement.totalTurret = 5;
@@ -98,6 +100,7 @@ public class WaveManager : MonoBehaviour
     public void GameOver()
 	{
         StopCoroutine(spawnRoutine);
+        StopCoroutine(wallRemove);
 		if (IsGameOver)
 		{
             IsGameOver = false;
@@ -117,6 +120,8 @@ public class WaveManager : MonoBehaviour
 		{
             enemy.GetComponent<Animator>().SetBool("Win",true);
 		}
+        //var script = GameObject.FindObjectOfType<DestroyBaseAnimation>();
+        //StartCoroutine(script.DestroyBase());
         yield return null;
 	}
 
@@ -165,7 +170,8 @@ public class WaveManager : MonoBehaviour
     {
         isWaveTriggered = true;
         spawnRoutine = StartCoroutine(StartSpawn());
-        StartCoroutine(RemoveBlocks());
+        wallRemove = StartCoroutine(RemoveBlocks());
+        //StartCoroutine(RemoveBlocks());
     }
 
     public IEnumerator StartSpawn()
