@@ -37,6 +37,8 @@ public class WaveManager : MonoBehaviour
     private Coroutine wallRemove;
     [SerializeField] int TimeBetweenWallRemove = 5;
 
+    public AudioSource audioSource;
+
 
 
 
@@ -165,6 +167,7 @@ public class WaveManager : MonoBehaviour
         isWaveTriggered = true;
         spawnRoutine = StartCoroutine(StartSpawn());
         wallRemove = StartCoroutine(RemoveBlocks());
+        audioSource.Play();
     }
 
     public IEnumerator StartSpawn()
