@@ -1,14 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class TurrentDestroy : MonoBehaviour
 {
 
     void OnMouseOver()
     {
-
-        if (Input.GetMouseButtonDown(0))
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            //is on button or some UI element
+            return;
+        }
+        else if (Input.GetMouseButtonDown(0))
         {
             if (gameObject.tag == "Turret")
             {

@@ -9,8 +9,13 @@ public class SetVolume : MonoBehaviour
 
     public AudioMixer mixer;
 
+	private void Start()
+	{
+		
+	}
 
-    public void SetLevel(float volume)
+
+	public void SetLevel(float volume)
 	{
         mixer.SetFloat("MusicVol", Mathf.Log10(volume) * 20);
 	}
