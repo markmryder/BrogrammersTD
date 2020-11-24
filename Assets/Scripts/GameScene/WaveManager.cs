@@ -116,8 +116,6 @@ public class WaveManager : MonoBehaviour
 		{
             enemy.GetComponent<Animator>().SetBool("Win",true);
 		}
-        //var script = GameObject.FindObjectOfType<DestroyBaseAnimation>();
-        //StartCoroutine(script.DestroyBase());
         yield return null;
 	}
 
@@ -167,7 +165,6 @@ public class WaveManager : MonoBehaviour
         isWaveTriggered = true;
         spawnRoutine = StartCoroutine(StartSpawn());
         wallRemove = StartCoroutine(RemoveBlocks());
-        //StartCoroutine(RemoveBlocks());
     }
 
     public IEnumerator StartSpawn()
@@ -200,15 +197,12 @@ public class WaveManager : MonoBehaviour
             {
                 break;
             }
-            //surface.BuildNavMesh();
             yield return new WaitForSeconds(TimeBetweenWallRemove);
             System.Random rand = new System.Random();
             int randNum = rand.Next(0, Walls.Count);
             GameObject destroyed = Walls[randNum];
-            //GameObject explosion = (GameObject)Resources.Load("Explson1");
             GameObject explosion = (GameObject)Resources.Load("Exploson1");
             Instantiate(explosion, destroyed.transform.position, Quaternion.identity);
-            //explosion.Play();
             Walls.RemoveAt(randNum);
             Debug.Log(destroyed.name);
             Destroy(destroyed);

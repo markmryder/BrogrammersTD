@@ -38,13 +38,11 @@ public class DestroyBaseAnimation : MonoBehaviour
             //add animation
             GameObject explosion = (GameObject)Resources.Load("Exploson1");
             Instantiate(explosion, building.transform.position, Quaternion.identity);
-            //add sound
             
             Destroy(building);
             yield return new WaitForSeconds(1);
         }
 
-        //yield return null;
 	}
 
 

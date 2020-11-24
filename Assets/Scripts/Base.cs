@@ -56,12 +56,8 @@ public class Base : MonoBehaviour
         //Destroy each object
         foreach (GameObject building in buildings)
         {
-
-            //add animation
             GameObject explosion = (GameObject)Resources.Load("Exploson1");
             Instantiate(explosion, building.transform.position, Quaternion.identity);
-            //add sound
-
             Destroy(building);
             yield return new WaitForSeconds(1);
         }
