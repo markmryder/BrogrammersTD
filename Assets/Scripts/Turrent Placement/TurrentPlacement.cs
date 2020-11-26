@@ -5,6 +5,7 @@ using System.Net.NetworkInformation;
 using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class TurrentPlacement : MonoBehaviour
 {
@@ -21,7 +22,14 @@ public class TurrentPlacement : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (gameObject.tag == "Floor" && totalTurret > 0)
+
+			if (EventSystem.current.IsPointerOverGameObject()) 
+            {
+                //is on button or some UI element
+                return;
+            }
+
+            else if (gameObject.tag == "Floor" && totalTurret > 0)
             {
                 turrent = (GameObject)Resources.Load("KenneyPrefabs/KenneyTurret2");
                 Vector3 position = new Vector3(transform.position.x, transform.position.y - 20, transform.position.z);
@@ -30,9 +38,18 @@ public class TurrentPlacement : MonoBehaviour
                 Instantiate(smoke, transform.position, Quaternion.identity);
                 print(transform.position);
                 totalTurret--;
+                StartCoroutine(PreventAnotherTurretPlacement());
             }
         }
     }
+
+
+    public IEnumerator PreventAnotherTurretPlacement()
+	{
+        gameObject.tag = "Floor_Delay";
+        yield return new WaitForSeconds(1);
+        gameObject.tag = "Floor";
+	}
 
     public IEnumerator TurretPlacementAnimation()
 	{

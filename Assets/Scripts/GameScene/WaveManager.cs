@@ -34,18 +34,18 @@ public class WaveManager : MonoBehaviour
     private bool IsGameOver = false;
 
     private Coroutine spawnRoutine;
+    private Coroutine wallRemove;
+    [SerializeField] int TimeBetweenWallRemove = 5;
 
-    private void Awake()
-	{
+    public AudioSource audioSource;
 
-	}
 
 
 
 
 	public void OnLevelWasLoaded(int level)
 	{
-        Walls = GameObject.FindGameObjectsWithTag("Wall").ToList<GameObject>();
+        //Walls = GameObject.FindGameObjectsWithTag("Wall").ToList<GameObject>();
         var spawn = GameObject.FindObjectOfType<SpawnNode>();
         var destination = GameObject.FindObjectOfType<Base>();
         SpawnLocation = spawn.GetComponent<Node>();
@@ -59,6 +59,7 @@ public class WaveManager : MonoBehaviour
         var Base = FindObjectOfType<Base>();
         BaseHealth = Base.Hitpoints;
         spawnRoutine = null;
+        wallRemove = null;
 
 
         TurrentPlacement.totalTurret = 5;
@@ -97,6 +98,7 @@ public class WaveManager : MonoBehaviour
     public void GameOver()
 	{
         StopCoroutine(spawnRoutine);
+        StopCoroutine(wallRemove);
 		if (IsGameOver)
 		{
             IsGameOver = false;
@@ -105,7 +107,7 @@ public class WaveManager : MonoBehaviour
 
         // start some coroutine maybe
         // return to home screen
-        print("GAME OVER");
+        print("GameOver");
         IsGameOver = true;
 	}
 
@@ -164,7 +166,8 @@ public class WaveManager : MonoBehaviour
     {
         isWaveTriggered = true;
         spawnRoutine = StartCoroutine(StartSpawn());
-        StartCoroutine(RemoveBlocks());
+        wallRemove = StartCoroutine(RemoveBlocks());
+        audioSource.Play();
     }
 
     public IEnumerator StartSpawn()
@@ -190,21 +193,23 @@ public class WaveManager : MonoBehaviour
 
     public IEnumerator RemoveBlocks()
     {
-
+        Walls = GameObject.FindGameObjectsWithTag("Wall").ToList<GameObject>();
         while (isGameActive)
         {
             if (Walls.Count == 0)
             {
                 break;
             }
-            surface.BuildNavMesh();
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(TimeBetweenWallRemove);
             System.Random rand = new System.Random();
             int randNum = rand.Next(0, Walls.Count);
             GameObject destroyed = Walls[randNum];
+            GameObject explosion = (GameObject)Resources.Load("Exploson1");
+            Instantiate(explosion, destroyed.transform.position, Quaternion.identity);
             Walls.RemoveAt(randNum);
             Debug.Log(destroyed.name);
             Destroy(destroyed);
+
 
         }
 

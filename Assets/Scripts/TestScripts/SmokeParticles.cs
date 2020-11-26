@@ -10,11 +10,6 @@ public class SmokeParticles : MonoBehaviour
         StartCoroutine(StopParticles());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private IEnumerator StopParticles()
 	{

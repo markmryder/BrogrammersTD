@@ -9,6 +9,8 @@ TagManager:
   - Wall
   - turret_head
   - Enemy
+  - Turret_Spawn
+  - Floor_Delay
   layers:
   - Default
   - TransparentFX

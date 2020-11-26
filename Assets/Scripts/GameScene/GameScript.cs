@@ -6,9 +6,11 @@ using UnityEngine.SceneManagement;
 public class GameScript : MonoBehaviour
 {
     [SerializeField] private GameObject menu;
+	[SerializeField] public GameObject endGameMenu;
     void Start()
     {
         menu.SetActive(false);
+		endGameMenu.SetActive(false);
     }
     void Update()
 	{
@@ -40,6 +42,12 @@ public class GameScript : MonoBehaviour
         Time.timeScale = 1;
         menu.SetActive(false);
     }
+
+
+	public void EndGame()
+	{
+		endGameMenu.SetActive(true);
+	}
 
     public void GotoHomeMenu()
 	{

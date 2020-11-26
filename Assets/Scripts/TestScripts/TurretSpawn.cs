@@ -9,6 +9,7 @@ public class TurretSpawn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(SpawnTimer());
         StartCoroutine(TurretPlacementAnimation());
     }
 
@@ -27,6 +28,13 @@ public class TurretSpawn : MonoBehaviour
 
         }
         yield return null;
+    }
+
+    public IEnumerator SpawnTimer()
+    {
+        gameObject.tag = "Turret_Spawn";
+        yield return new WaitForSeconds(1);
+        gameObject.tag = "Turret";
     }
 
     private AudioClip MakeSubclip(AudioClip clip, float start, float stop)
