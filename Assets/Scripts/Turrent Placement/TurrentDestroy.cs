@@ -1,10 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class TurrentDestroy : MonoBehaviour
 {
+    private List<GameObject> Floors;
+
+    public GameObject turretFloor;
+
+    void Start()
+    {
+        Floors = GameObject.FindGameObjectsWithTag("Floor_Delay").ToList<GameObject>();
+        //turretFloor = Floors[0];
+        foreach (GameObject currentFloor in Floors)
+        {
+            if (currentFloor.transform.position.x == gameObject.transform.position.x
+                && currentFloor.transform.position.z == gameObject.transform.position.z)
+            {
+                turretFloor = currentFloor;
+                break;
+            }
+        }
+    }
 
     void OnMouseOver()
     {
@@ -19,6 +38,7 @@ public class TurrentDestroy : MonoBehaviour
             {
                 
                 StartCoroutine(TurretDestroyAnimation());
+                turretFloor.GetComponent<TurrentPlacement>().StartChangeColour();
                 TurrentPlacement.totalTurret++;
             }
         }
@@ -37,5 +57,4 @@ public class TurrentDestroy : MonoBehaviour
         Destroy(gameObject);
         yield return null;
     }
-
 }
