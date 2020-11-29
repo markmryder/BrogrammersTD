@@ -7,10 +7,12 @@ public class GameScript : MonoBehaviour
 {
     [SerializeField] private GameObject menu;
 	[SerializeField] public GameObject endGameMenu;
+	[SerializeField] public GameObject endWaveMenu;
     void Start()
     {
         menu.SetActive(false);
 		endGameMenu.SetActive(false);
+		endWaveMenu.SetActive(false);
     }
     void Update()
 	{
@@ -43,7 +45,10 @@ public class GameScript : MonoBehaviour
         menu.SetActive(false);
     }
 
-
+	public void EndWave() 
+	{
+		endWaveMenu.SetActive(true);
+	}
 	public void EndGame()
 	{
 		endGameMenu.SetActive(true);

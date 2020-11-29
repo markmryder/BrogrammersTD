@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityStandardAssets.Characters.ThirdPerson;
 
 public class EnemyDamage : MonoBehaviour
@@ -22,9 +23,16 @@ public class EnemyDamage : MonoBehaviour
         character = gameObject.GetComponent<ThirdPersonCharacter>();
         collider = gameObject.GetComponent<CapsuleCollider>();
         mover = gameObject.GetComponent<EnemyMoveTo>();
-
+        SetStats();
         HealthBar.SetMaxHealth(hitPoints);
     }
+
+    private void SetStats()
+	{
+        hitPoints += WaveStats.Wave;
+        var agent = gameObject.GetComponent<NavMeshAgent>();
+        agent.speed = 0.8f + ((WaveStats.Wave - 1) *(0.05f));
+	}
 
     private void OnParticleCollision()
     {
@@ -41,7 +49,8 @@ public class EnemyDamage : MonoBehaviour
     }
     private IEnumerator WaitForDeath()
 	{
-        WaveStats.AddToScore();
+        var wave = GameObject.FindObjectOfType<WaveManager>();
+        wave.AddToScore();
         yield return new WaitForSeconds(3);
         Destroy(gameObject);
 	}

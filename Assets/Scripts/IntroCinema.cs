@@ -12,7 +12,7 @@ public class IntroCinema : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TraverseMaze();
+        //TraverseMaze();
     }
 
     // Update is called once per frame
@@ -21,7 +21,7 @@ public class IntroCinema : MonoBehaviour
 
     }
 
-    private void TraverseMaze() 
+    public void TraverseMaze() 
     {
         StartCoroutine(DoRotationAtTargetDirection());
         print("done node");   

@@ -41,7 +41,9 @@ public class EnemyMoveTo : MonoBehaviour
         
     }
 
-	public void DestroyEnemy()
+
+
+        public void DestroyEnemy()
 	{
         Destroy(gameObject);
 	}

@@ -13,6 +13,9 @@ public class WaveManager : MonoBehaviour
     public static WaveManager wave;
     private int waveNumber;
     private int score;
+    public int timeBetweenSpawn = 3;
+
+
     [SerializeField] Text WaveInfoText;
     public Text TurretInfoText;
     public Text BaseHealthInfoText;
@@ -81,8 +84,12 @@ public class WaveManager : MonoBehaviour
 
 		if (IsWaveOver())
 		{
-            NextWave();
-		}
+            //have some transition for next wave
+            //NextWave();
+            StopCoroutine(wallRemove);
+            var script = GameObject.FindObjectOfType<GameScript>();
+            script.EndWave();
+        }
 	}
 
 	private void CheckBaseHealth()
@@ -109,6 +116,11 @@ public class WaveManager : MonoBehaviour
         // return to home screen
         print("GameOver");
         IsGameOver = true;
+	}
+
+    public void AddToScore()
+	{
+        score += 1;
 	}
 
     private IEnumerator GameOverCoroutine()
@@ -151,7 +163,13 @@ public class WaveManager : MonoBehaviour
 		}
         else
         {
-            return true;
+            //check base health first
+            var Base = FindObjectOfType<Base>();
+            if(Base.Hitpoints > 0)
+			{
+                return true;
+            }
+            return false;
 		}
 	}
     private int CountEnemies()
@@ -168,13 +186,15 @@ public class WaveManager : MonoBehaviour
         spawnRoutine = StartCoroutine(StartSpawn());
         wallRemove = StartCoroutine(RemoveBlocks());
         audioSource.Play();
+        var button = GameObject.Find("StartWaveButton");
+        button.SetActive(false);
     }
 
     public IEnumerator StartSpawn()
     {
         while (isWaveTriggered && enemiesRemaining > 0)
         {
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(timeBetweenSpawn);
             Vector3 position = SpawnLocation.transform.position;
             Instantiate(Enemy, position, Quaternion.identity);
             enemiesRemaining--;
@@ -185,8 +205,9 @@ public class WaveManager : MonoBehaviour
 
     public void NextWave()
 	{
+        //increment the wave
+        WaveStats.Score = score;
         WaveStats.NextWave();
-        //do stuff here
 
         SceneManager.LoadScene("DemoSceneCopy");
 	}
