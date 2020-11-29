@@ -784,6 +784,7 @@ MonoBehaviour:
   minWalls: 50
   surface: {fileID: 694764284}
   path: 2
+  levelSeed: 0
 --- !u!114 &187098757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4219,6 +4220,8 @@ MonoBehaviour:
   BaseHealthInfoText: {fileID: 0}
   ScoreInfoText: {fileID: 0}
   EnemiesRemainingText: {fileID: 0}
+  ErrorTurretPlacement: {fileID: 0}
+  testing: {fileID: 0}
   SpawnLocation: {fileID: 0}
   Destination: {fileID: 0}
   isWaveTriggered: 0
