@@ -84,6 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19017db87efd0884f8cde5b14dd4714f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turretFloor: {fileID: 0}
 --- !u!65 &7900764064365031963
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -313,6 +314,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5279100757791477913, guid: 620fa6ca2fe9efa458db5667178aec88, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 6582030613577444406, guid: 620fa6ca2fe9efa458db5667178aec88, type: 3}
       propertyPath: m_Name
       value: KenneyWall
@@ -320,6 +325,10 @@ PrefabInstance:
     - target: {fileID: 6582030613577444406, guid: 620fa6ca2fe9efa458db5667178aec88, type: 3}
       propertyPath: m_TagString
       value: Turret
+      objectReference: {fileID: 0}
+    - target: {fileID: 6920366342769961794, guid: 620fa6ca2fe9efa458db5667178aec88, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 8687823422457997968, guid: 620fa6ca2fe9efa458db5667178aec88, type: 3}
       propertyPath: m_LocalPosition.x
