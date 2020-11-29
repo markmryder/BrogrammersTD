@@ -285,6 +285,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floorMaterial: {fileID: 8507789265930873676, guid: 8a8899b228b02c641b311c00996ad047, type: 3}
   blueMaterial: {fileID: 2100000, guid: ddd853c3bac9b0745ac72c01a13ba270, type: 2}
+  redFloor: {fileID: 2100000, guid: e1765547f99a9e745a612a218d0c7b33, type: 2}
+  locationx: 0
+  locationz: 0
 --- !u!1 &5524045208975122975
 GameObject:
   m_ObjectHideFlags: 0

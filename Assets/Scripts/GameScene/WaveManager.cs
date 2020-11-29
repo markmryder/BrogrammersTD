@@ -13,7 +13,7 @@ public class WaveManager : MonoBehaviour
     public static WaveManager wave;
     private int waveNumber;
     private int score;
-    public int timeBetweenSpawn = 3;
+    public float timeBetweenSpawn = 3.0f;
 
 
     [SerializeField] Text WaveInfoText;
@@ -21,6 +21,10 @@ public class WaveManager : MonoBehaviour
     public Text BaseHealthInfoText;
     public Text ScoreInfoText;
     public Text EnemiesRemainingText;
+
+    public Text ErrorTurretPlacement;
+    public GameObject testing;
+
 
     public Node SpawnLocation;
     public Node Destination;
@@ -38,7 +42,7 @@ public class WaveManager : MonoBehaviour
 
     private Coroutine spawnRoutine;
     private Coroutine wallRemove;
-    [SerializeField] int TimeBetweenWallRemove = 5;
+    [SerializeField] float TimeBetweenWallRemove = 5.0f;
 
     public AudioSource audioSource;
 
@@ -59,6 +63,9 @@ public class WaveManager : MonoBehaviour
         ScoreInfoText = GameObject.Find("ScoreText").GetComponent<Text>();
         EnemiesRemainingText = GameObject.Find("EnemiesRemainingText").GetComponent<Text>();
 
+        ErrorTurretPlacement = GameObject.Find("CannotPlaceTurretText").GetComponent<Text>();
+        testing = GameObject.Find("CannotPlaceTurretText");
+
         var Base = FindObjectOfType<Base>();
         BaseHealth = Base.Hitpoints;
         spawnRoutine = null;
@@ -72,6 +79,13 @@ public class WaveManager : MonoBehaviour
         enemiesRemaining = WaveStats.EnemiesPerWave;
     }
 
+
+    public void FadeText()
+	{
+        testing.SetActive(true);
+        var script = testing.GetComponent<FadeOut>();
+        script.FadeTextOut();
+	}
 	private void Update()
 	{
         CheckBaseHealth();
@@ -214,6 +228,7 @@ public class WaveManager : MonoBehaviour
 
     public IEnumerator RemoveBlocks()
     {
+        yield return new WaitForSeconds(timeBetweenSpawn);
         Walls = GameObject.FindGameObjectsWithTag("Wall").ToList<GameObject>();
         while (isGameActive)
         {
