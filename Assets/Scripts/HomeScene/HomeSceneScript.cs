@@ -22,4 +22,9 @@ public class HomeSceneScript : MonoBehaviour
 	{
         SceneManager.LoadScene("DemoSceneCopy");
 	}
+
+    public void LoadCredits()
+	{
+        SceneManager.LoadScene("CreditsScene");
+	}
 }
