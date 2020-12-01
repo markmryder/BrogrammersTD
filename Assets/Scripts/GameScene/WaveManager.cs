@@ -30,6 +30,7 @@ public class WaveManager : MonoBehaviour
     public Node Destination;
     public bool isWaveTriggered;
     [SerializeField] GameObject Enemy;
+    [SerializeField] GameObject Enemy2;
 
     private List<GameObject> Walls;
     private bool isGameActive = true;
@@ -209,8 +210,17 @@ public class WaveManager : MonoBehaviour
         while (isWaveTriggered && enemiesRemaining > 0)
         {
             yield return new WaitForSeconds(timeBetweenSpawn);
-            Vector3 position = SpawnLocation.transform.position;
-            Instantiate(Enemy, position, Quaternion.identity);
+            if(enemiesRemaining % 3 == 0)
+			{
+                Vector3 position = SpawnLocation.transform.position;
+                Instantiate(Enemy2, position, Quaternion.identity);
+            }
+			else
+			{
+                Vector3 position = SpawnLocation.transform.position;
+                Instantiate(Enemy, position, Quaternion.identity);
+            }
+            
             enemiesRemaining--;
 
         }

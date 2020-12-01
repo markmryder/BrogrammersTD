@@ -2590,7 +2590,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 431403fadcfeebf4fa51a5f81cf86bfb, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 40334f218a4493d43af3f671b4de1cad, type: 2}
 --- !u!4 &694764285
 Transform:
   m_ObjectHideFlags: 0
@@ -2621,6 +2621,7 @@ MonoBehaviour:
   Destination: {fileID: 393203125}
   isWaveTriggered: 0
   Enemy: {fileID: 8027183650287558477, guid: 2fd60cd18eb40e44b87eae8fe6acdeef, type: 3}
+  Enemy2: {fileID: 0}
 --- !u!114 &694764287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4346,6 +4347,7 @@ MonoBehaviour:
   Destination: {fileID: 0}
   isWaveTriggered: 0
   Enemy: {fileID: 8027183650287558477, guid: 2fd60cd18eb40e44b87eae8fe6acdeef, type: 3}
+  Enemy2: {fileID: 2502480234546638513, guid: 64f7b22918a3e5e49b77cf57eea42219, type: 3}
   surface: {fileID: 694764284}
   BaseHealth: 5
   TimeBetweenWallRemove: 3

@@ -10,6 +10,7 @@ public class SpawnEnemies : MonoBehaviour
     [SerializeField] Node Destination;
     public bool isWaveTriggered;
     [SerializeField] GameObject Enemy;
+    [SerializeField] GameObject Enemy2;
 
 
     // Start is called before the first frame update

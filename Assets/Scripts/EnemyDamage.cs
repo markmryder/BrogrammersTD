@@ -31,7 +31,7 @@ public class EnemyDamage : MonoBehaviour
 	{
         hitPoints += WaveStats.Wave;
         var agent = gameObject.GetComponent<NavMeshAgent>();
-        agent.speed = 0.8f + ((WaveStats.Wave - 1) *(0.05f));
+        agent.speed = agent.speed + ((WaveStats.Wave - 1) *(0.05f));
 	}
 
     private void OnParticleCollision()
