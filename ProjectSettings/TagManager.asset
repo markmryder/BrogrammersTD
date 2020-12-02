@@ -11,6 +11,7 @@ TagManager:
   - Enemy
   - Turret_Spawn
   - Floor_Delay
+  - Base
   layers:
   - Default
   - TransparentFX

@@ -12,8 +12,11 @@ public class TurrentPlacement : MonoBehaviour
 {
     static public int totalTurret = 5;
     private GameObject turrent;
+    public Text textField;
+
     public Material floorMaterial;
     public Material blueMaterial;
+    public Material redFloor;
     public int locationx;
     public int locationz;
 
@@ -49,6 +52,13 @@ public class TurrentPlacement : MonoBehaviour
                     totalTurret--;
                     StartCoroutine(PreventAnotherTurretPlacement());
                 }
+				else
+				{
+                    //do something to tell user they cant place because it will block the path
+                    var wave = FindObjectOfType<WaveManager>();
+
+                    wave.FadeText();
+				}
             }
         }
     }
@@ -78,7 +88,7 @@ public class TurrentPlacement : MonoBehaviour
     public IEnumerator ChangeColour()
     {
         gameObject.tag = "Floor_Delay";
-        gameObject.transform.GetChild(5).gameObject.GetComponent<Renderer>().material = blueMaterial;
+        gameObject.transform.GetChild(5).gameObject.GetComponent<Renderer>().material = redFloor;
         yield return new WaitForSeconds(10);
         gameObject.tag = "Floor";
         gameObject.transform.GetChild(5).gameObject.GetComponent<Renderer>().material = floorMaterial;

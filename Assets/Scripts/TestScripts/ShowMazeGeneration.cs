@@ -139,7 +139,7 @@ public class ShowMazeGeneration : MonoBehaviour
                             face.material.SetColor("_Color", Color.white);
 						}
 
-                        yield return new WaitForSeconds(0.5f);
+                        yield return new WaitForSeconds(0.25f);
                         Destroy(block);
                         
                     }

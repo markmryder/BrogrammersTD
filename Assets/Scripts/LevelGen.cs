@@ -10,6 +10,7 @@ public class LevelGen : MonoBehaviour
     [SerializeField] int minWalls = 30;
     [SerializeField] NavMeshSurface surface;
     [SerializeField] int path = 2;
+    [SerializeField] int levelSeed;
 
     // Start is called before the first frame update
 
@@ -32,9 +33,18 @@ public class LevelGen : MonoBehaviour
         int gridRow = 20;
         int gridCol = 10;
         //number of paths
-        int seed = System.Guid.NewGuid().GetHashCode();
+
         //int seed = 12464509;
         //int seed = -1628367540; //for maze demo video
+        int seed;
+        if(levelSeed == 0)
+		{
+            seed = System.Guid.NewGuid().GetHashCode();
+        }
+		else 
+        {
+            seed = levelSeed;
+        }
         System.Random rand = new System.Random(seed);
         print(seed);
         

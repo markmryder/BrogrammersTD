@@ -13,7 +13,7 @@ public class WaveManager : MonoBehaviour
     public static WaveManager wave;
     private int waveNumber;
     private int score;
-    public int timeBetweenSpawn = 3;
+    public float timeBetweenSpawn = 3.0f;
 
 
     [SerializeField] Text WaveInfoText;
@@ -22,10 +22,15 @@ public class WaveManager : MonoBehaviour
     public Text ScoreInfoText;
     public Text EnemiesRemainingText;
 
+    public Text ErrorTurretPlacement;
+    public GameObject testing;
+
+
     public Node SpawnLocation;
     public Node Destination;
     public bool isWaveTriggered;
     [SerializeField] GameObject Enemy;
+    [SerializeField] GameObject Enemy2;
 
     private List<GameObject> Walls;
     private bool isGameActive = true;
@@ -38,9 +43,11 @@ public class WaveManager : MonoBehaviour
 
     private Coroutine spawnRoutine;
     private Coroutine wallRemove;
-    [SerializeField] int TimeBetweenWallRemove = 5;
+    [SerializeField] float TimeBetweenWallRemove = 5.0f;
 
     public AudioSource audioSource;
+
+    public Material floorMat;
 
     
 
@@ -59,6 +66,9 @@ public class WaveManager : MonoBehaviour
         ScoreInfoText = GameObject.Find("ScoreText").GetComponent<Text>();
         EnemiesRemainingText = GameObject.Find("EnemiesRemainingText").GetComponent<Text>();
 
+        ErrorTurretPlacement = GameObject.Find("CannotPlaceTurretText").GetComponent<Text>();
+        testing = GameObject.Find("CannotPlaceTurretText");
+
         var Base = FindObjectOfType<Base>();
         BaseHealth = Base.Hitpoints;
         spawnRoutine = null;
@@ -72,6 +82,13 @@ public class WaveManager : MonoBehaviour
         enemiesRemaining = WaveStats.EnemiesPerWave;
     }
 
+
+    public void FadeText()
+	{
+        testing.SetActive(true);
+        var script = testing.GetComponent<FadeOut>();
+        script.FadeTextOut();
+	}
 	private void Update()
 	{
         CheckBaseHealth();
@@ -195,8 +212,17 @@ public class WaveManager : MonoBehaviour
         while (isWaveTriggered && enemiesRemaining > 0)
         {
             yield return new WaitForSeconds(timeBetweenSpawn);
-            Vector3 position = SpawnLocation.transform.position;
-            Instantiate(Enemy, position, Quaternion.identity);
+            if(enemiesRemaining % 3 == 0)
+			{
+                Vector3 position = SpawnLocation.transform.position;
+                Instantiate(Enemy2, position, Quaternion.identity);
+            }
+			else
+			{
+                Vector3 position = SpawnLocation.transform.position;
+                Instantiate(Enemy, position, Quaternion.identity);
+            }
+            
             enemiesRemaining--;
 
         }
@@ -214,6 +240,7 @@ public class WaveManager : MonoBehaviour
 
     public IEnumerator RemoveBlocks()
     {
+        yield return new WaitForSeconds(timeBetweenSpawn);
         Walls = GameObject.FindGameObjectsWithTag("Wall").ToList<GameObject>();
         while (isGameActive)
         {
@@ -221,10 +248,12 @@ public class WaveManager : MonoBehaviour
             {
                 break;
             }
-            yield return new WaitForSeconds(TimeBetweenWallRemove);
+            
             System.Random rand = new System.Random();
             int randNum = rand.Next(0, Walls.Count);
             GameObject destroyed = Walls[randNum];
+            ChangeMAts(destroyed);
+            yield return new WaitForSeconds(TimeBetweenWallRemove);
             GameObject explosion = (GameObject)Resources.Load("Exploson1");
             Instantiate(explosion, destroyed.transform.position, Quaternion.identity);
             Walls.RemoveAt(randNum);
@@ -234,6 +263,17 @@ public class WaveManager : MonoBehaviour
 
         }
 
+    }
+
+    private void ChangeMAts(GameObject destroyed)
+	{
+        destroyed.transform.GetChild(0).GetComponent<MeshRenderer>().materials[0] = floorMat;
+        destroyed.transform.GetChild(0).GetComponent<MeshRenderer>().materials[1] = floorMat;
+        destroyed.transform.GetChild(0).GetComponent<MeshRenderer>().materials[2] = floorMat;
+        var mats = destroyed.transform.GetChild(0).GetComponents<Material>();
+        mats[2] = floorMat;
+        print(destroyed.transform.GetChild(0).GetComponent<MeshRenderer>().materials[2]);
+        print("Changes mats");
     }
 
 

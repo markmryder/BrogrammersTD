@@ -12,13 +12,14 @@ public class EnemyMoveTo : MonoBehaviour
     public NavMeshSurface surface;
     public NavMeshAgent agent;
     [SerializeField] int Hitpoints = 12;
-
+    
     public ThirdPersonCharacter character;
 
     // Start is called before the first frame update
     void Start()
     {
-        surface = GameObject.Find("NavMesh").GetComponent<NavMeshSurface>();
+        //surface = GameObject.Find("NavMesh").GetComponent<NavMeshSurface>();
+        surface = GameObject.Find("World").GetComponent<NavMeshSurface>();
         agent = GetComponent<NavMeshAgent>();
 
         agent.updateRotation = false;
@@ -41,9 +42,16 @@ public class EnemyMoveTo : MonoBehaviour
         
     }
 
+	private void OnCollisionEnter(Collision collision)
+	{
+		if(collision.gameObject.tag == "Enemy")
+		{
+            print("Trying to ignore collision");
+            Physics.IgnoreCollision(collision.collider, gameObject.GetComponent<CapsuleCollider>());
+		}
+	}
 
-
-        public void DestroyEnemy()
+	public void DestroyEnemy()
 	{
         Destroy(gameObject);
 	}

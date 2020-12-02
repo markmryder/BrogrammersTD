@@ -28,33 +28,67 @@ public class CameraController : MonoBehaviour
 
 	private void MoveCamera()
 	{
-		if (Input.GetKey(KeyCode.D))
+		if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
 		{
 			if (camera.transform.position.x <= maxX && camera.transform.position.z >= minZ)
 			{
 				camera.transform.position += new Vector3(speed * Time.deltaTime, 0, -speed * Time.deltaTime);
 			}
 		}
-		if (Input.GetKey(KeyCode.A))
+		if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
 		{
 			if (camera.transform.position.x >= minX && camera.transform.position.z <= maxZ)
 			{
 				camera.transform.position += new Vector3(-speed * Time.deltaTime, 0, speed * Time.deltaTime);
 			}
 		}
-		if (Input.GetKey(KeyCode.W))
+		if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
 		{
 			if (camera.transform.position.z <= maxZ && camera.transform.position.x <= maxX)
 			{
 				camera.transform.position += new Vector3(speed * Time.deltaTime, 0, speed * Time.deltaTime);
 			}
 		}
-		if (Input.GetKey(KeyCode.S))
+		if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
 		{
 			if (camera.transform.position.z >= minZ && camera.transform.position.x >= minX)
 			{
 				camera.transform.position += new Vector3(-speed * Time.deltaTime, 0, -speed * Time.deltaTime);
 			}
 		}
+
+		//testing mouse movement below
+
+		float sensitivity = 40f;
+		if(Input.mousePosition.x > Screen.width - sensitivity)
+		{
+			if (camera.transform.position.x <= maxX && camera.transform.position.z >= minZ)
+			{
+				camera.transform.position += new Vector3(speed * Time.deltaTime, 0, -speed * Time.deltaTime);
+			}
+		}
+		if (Input.mousePosition.x < sensitivity)
+		{
+			if (camera.transform.position.x >= minX && camera.transform.position.z <= maxZ)
+			{
+				camera.transform.position += new Vector3(-speed * Time.deltaTime, 0, speed * Time.deltaTime);
+			}
+		}
+		if(Input.mousePosition.y > Screen.height - sensitivity)
+		{
+			if (camera.transform.position.z <= maxZ && camera.transform.position.x <= maxX)
+			{
+				camera.transform.position += new Vector3(speed * Time.deltaTime, 0, speed * Time.deltaTime);
+			}
+		}
+		if(Input.mousePosition.y < sensitivity)
+		{
+			if (camera.transform.position.z >= minZ && camera.transform.position.x >= minX)
+			{
+				camera.transform.position += new Vector3(-speed * Time.deltaTime, 0, -speed * Time.deltaTime);
+			}
+		}
+
+
 	}
 }
