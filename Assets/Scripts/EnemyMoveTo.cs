@@ -42,14 +42,7 @@ public class EnemyMoveTo : MonoBehaviour
         
     }
 
-	private void OnCollisionEnter(Collision collision)
-	{
-		if(collision.gameObject.tag == "Enemy")
-		{
-            print("Trying to ignore collision");
-            Physics.IgnoreCollision(collision.collider, gameObject.GetComponent<CapsuleCollider>());
-		}
-	}
+
 
 	public void DestroyEnemy()
 	{

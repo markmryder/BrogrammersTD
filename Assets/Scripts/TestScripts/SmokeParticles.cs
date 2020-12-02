@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SmokeParticles : MonoBehaviour
 {
+    [SerializeField] float DestroyAfter;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,7 +14,7 @@ public class SmokeParticles : MonoBehaviour
 
     private IEnumerator StopParticles()
 	{
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(DestroyAfter);
         Destroy(gameObject);
 	}
 }
