@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+ Created by: Mark Ryder
+ Contributions:
+ */
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,7 +60,7 @@ public class WaveManager : MonoBehaviour
 
 	public void OnLevelWasLoaded(int level)
 	{
-        //Walls = GameObject.FindGameObjectsWithTag("Wall").ToList<GameObject>();
+
         var spawn = GameObject.FindObjectOfType<SpawnNode>();
         var destination = GameObject.FindObjectOfType<Base>();
         SpawnLocation = spawn.GetComponent<Node>();

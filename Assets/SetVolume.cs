@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿/*
+ Created by: Mark Ryder
+ Contributions:
+ */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -8,11 +12,6 @@ public class SetVolume : MonoBehaviour
 
 
     public AudioMixer mixer;
-
-	private void Start()
-	{
-		
-	}
 
 
 	public void SetLevel(float volume)

@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+ Created by: Mark Ryder
+ Contributions:
+ */
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,19 +13,7 @@ public class Node : MonoBehaviour
     public bool isExplored = false;
     public bool isTraverable = true;
     public Node exploredFrom;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        //UpdateColor();
-    }
 
 	private void UpdateColor()
 	{

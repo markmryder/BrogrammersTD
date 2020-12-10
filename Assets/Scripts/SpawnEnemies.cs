@@ -1,11 +1,13 @@
-﻿using System.Collections;
+﻿/*
+ Created by: Mark Ryder
+ Contributions:
+ */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnEnemies : MonoBehaviour
 {
-    //[SerializeField] public Node Start;
-    //[SerializeField] public Node End;
     [SerializeField] Node SpawnLocation;
     [SerializeField] Node Destination;
     public bool isWaveTriggered;

@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿/*
+ Created by: Mark Ryder
+ Contributions:
+ */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -37,6 +41,14 @@ public class TurretSpawn : MonoBehaviour
         gameObject.tag = "Turret";
     }
 
+
+    /// <summary>
+    /// This method was not created by us. It is meant to chop audioclips at specific time stamps
+    /// </summary>
+    /// <param name="clip"></param>
+    /// <param name="start"></param>
+    /// <param name="stop"></param>
+    /// <returns></returns>
     private AudioClip MakeSubclip(AudioClip clip, float start, float stop)
     {
         /* Create a new audio clip */
