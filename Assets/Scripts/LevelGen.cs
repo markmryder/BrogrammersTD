@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
+//Created by: Arashdeep Wander
 public class LevelGen : MonoBehaviour
 {
     [SerializeField] int minWalls = 30;
@@ -32,7 +33,6 @@ public class LevelGen : MonoBehaviour
         //grid size
         int gridRow = 20;
         int gridCol = 10;
-        //number of paths
 
         //int seed = 12464509;
         //int seed = -1628367540; //for maze demo video
