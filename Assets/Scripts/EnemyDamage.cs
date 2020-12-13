@@ -1,6 +1,6 @@
 ﻿/*
  Created by: Mark Ryder
- Contributions:
+ Contributions: Jake Arthurs
  */
 using System.Collections;
 using System.Collections.Generic;
@@ -38,6 +38,7 @@ public class EnemyDamage : MonoBehaviour
         agent.speed = agent.speed + ((WaveStats.Wave - 1) *(0.05f));
 	}
 
+    //Written by Jake Arthurs
     private void OnParticleCollision()
     {
         hitPoints = hitPoints - 1;

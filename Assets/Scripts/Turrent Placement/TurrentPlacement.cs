@@ -65,7 +65,7 @@ public class TurrentPlacement : MonoBehaviour
         }
     }
 
-
+    //Written by Jake Arthurs
     public IEnumerator PreventAnotherTurretPlacement()
 	{
         gameObject.tag = "Floor_Delay";
@@ -87,6 +87,7 @@ public class TurrentPlacement : MonoBehaviour
         yield return null;
     }
 
+    //Written by Jake Arthurs
     public IEnumerator ChangeColour()
     {
         gameObject.tag = "Floor_Delay";
@@ -96,11 +97,13 @@ public class TurrentPlacement : MonoBehaviour
         gameObject.transform.GetChild(5).gameObject.GetComponent<Renderer>().material = floorMaterial;
     }
 
+    //Written by Jake Arthurs
     public void StartChangeColour()
     {
         StartCoroutine(ChangeColour());
     }
 
+    //Written by Jake Arthurs
     bool WillBlock()
     {
         int[] getLocation;
@@ -134,6 +137,7 @@ public class TurrentPlacement : MonoBehaviour
         return true;
     }
 
+    //Written by Jake Arthurs
     void SolveMaze(int[,] values, int cx, int cz)
     {
         values[cx, cz]++;
@@ -147,6 +151,7 @@ public class TurrentPlacement : MonoBehaviour
             SolveMaze(values, cx, cz - 1);
     }
 
+    //Written by Jake Arthurs
     int[] MazeLocation(float posx, float posz)
     {
         int x, z = 0;
