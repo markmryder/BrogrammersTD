@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿/*
+ Created by: Mark Ryder
+ Contributions:
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,11 +17,6 @@ public class HomeSceneScript : MonoBehaviour
     }
 
 
-	// Update is called once per frame
-	void Update()
-    {
-        
-    }
 
     public void LoadGame()
 	{

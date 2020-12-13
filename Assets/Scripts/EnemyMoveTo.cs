@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿/*
+ Created by: Mark Ryder
+ Contributions:
+ */
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -42,14 +46,7 @@ public class EnemyMoveTo : MonoBehaviour
         
     }
 
-	private void OnCollisionEnter(Collision collision)
-	{
-		if(collision.gameObject.tag == "Enemy")
-		{
-            print("Trying to ignore collision");
-            Physics.IgnoreCollision(collision.collider, gameObject.GetComponent<CapsuleCollider>());
-		}
-	}
+
 
 	public void DestroyEnemy()
 	{

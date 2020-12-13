@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+ Created by: Mark Ryder
+ Contributions:
+ */
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,7 +60,7 @@ public class WaveManager : MonoBehaviour
 
 	public void OnLevelWasLoaded(int level)
 	{
-        //Walls = GameObject.FindGameObjectsWithTag("Wall").ToList<GameObject>();
+
         var spawn = GameObject.FindObjectOfType<SpawnNode>();
         var destination = GameObject.FindObjectOfType<Base>();
         SpawnLocation = spawn.GetComponent<Node>();
@@ -252,8 +257,11 @@ public class WaveManager : MonoBehaviour
             System.Random rand = new System.Random();
             int randNum = rand.Next(0, Walls.Count);
             GameObject destroyed = Walls[randNum];
-            ChangeMAts(destroyed);
+            GameObject smoke = (GameObject)Resources.Load("SmokeParticleSystem2");
+            Instantiate(smoke, destroyed.transform.position, Quaternion.identity);
+            //ChangeMAts(destroyed);
             yield return new WaitForSeconds(TimeBetweenWallRemove);
+            
             GameObject explosion = (GameObject)Resources.Load("Exploson1");
             Instantiate(explosion, destroyed.transform.position, Quaternion.identity);
             Walls.RemoveAt(randNum);
@@ -265,16 +273,7 @@ public class WaveManager : MonoBehaviour
 
     }
 
-    private void ChangeMAts(GameObject destroyed)
-	{
-        destroyed.transform.GetChild(0).GetComponent<MeshRenderer>().materials[0] = floorMat;
-        destroyed.transform.GetChild(0).GetComponent<MeshRenderer>().materials[1] = floorMat;
-        destroyed.transform.GetChild(0).GetComponent<MeshRenderer>().materials[2] = floorMat;
-        var mats = destroyed.transform.GetChild(0).GetComponents<Material>();
-        mats[2] = floorMat;
-        print(destroyed.transform.GetChild(0).GetComponent<MeshRenderer>().materials[2]);
-        print("Changes mats");
-    }
+
 
 
 }

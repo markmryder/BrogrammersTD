@@ -8,6 +8,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
+//Created by Arashdeep Wander, and Jake Arthurs
+
 public class TurrentPlacement : MonoBehaviour
 {
     static public int totalTurret = 5;

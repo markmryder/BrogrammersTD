@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿/*
+ Created by: Mark Ryder, Arashdeep Wander
+ Contributions:
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
